@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikunj K. Kothiya | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+        /* Cursor glow */
+        .cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: left 0.3s ease-out, top 0.3s ease-out;
+        }
+
+        /* Particle canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Hero animated gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa, #6366f1);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.1em;
+            background: #6366f1;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(15px); }
+        }
+
+        .float-1 { animation: float 6s ease-in-out infinite; }
+        .float-2 { animation: floatSlow 8s ease-in-out infinite 1s; }
+        .float-3 { animation: floatReverse 7s ease-in-out infinite 0.5s; }
+
+        /* Orbit animation */
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+        }
+
+        @keyframes orbitReverse {
+            from { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+            to { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+        }
+
+        .orbit-1 { animation: orbit 20s linear infinite; }
+        .orbit-2 { animation: orbitReverse 15s linear infinite; }
+        .orbit-3 { animation: orbit 25s linear infinite 5s; }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Skill bar animation */
+        .skill-bar-fill {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .skill-bar-fill.animate {
+            width: var(--skill-width);
+        }
+
+        /* Timeline styles */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #4f46e5, #6366f1, #4f46e5, transparent);
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line { left: 20px; }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #6366f1;
+            border: 3px solid #1a1a2e;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot { left: 20px; }
+        }
+
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(99,102,241,0.3);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        /* Magnetic button */
+        .magnetic-btn {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .magnetic-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .magnetic-btn:hover::before { opacity: 1; }
+
+        /* Card hover glow */
+        .card-glow {
+            position: relative;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-glow::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(99,102,241,0.3), transparent, rgba(139,92,246,0.3));
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .card-glow:hover::before { opacity: 1; }
+        .card-glow:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(99,102,241,0.3);
+            transform: translateY(-4px);
+        }
+
+        /* Nav styles */
+        .nav-glass {
+            background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after { width: 100%; }
+
+        /* Hero photo styles */
+        .photo-container {
+            position: relative;
+        }
+
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa, #6366f1);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
+            z-index: -1;
+        }
+
+        .photo-container::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.2), transparent 70%);
+            z-index: -2;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .photo-container img {
+            object-fit: cover;
+            object-position: center top; /* try: center, top, 40% 30%, etc */
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Stats counter */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Tech tag */
+        .tech-tag {
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.2);
+            color: #a5b4fc;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tech-tag:hover {
+            background: rgba(99,102,241,0.2);
+            border-color: rgba(99,102,241,0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Section heading decoration */
+        .section-heading {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        /* Marquee for skills */
+        .marquee-track {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0a;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s, visibility 0.6s;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-ring {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top: 3px solid #6366f1;
+            border-right: 3px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Project card image placeholder */
+        .project-visual {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.05));
+            z-index: 1;
+        }
+
+        /* Smooth section transitions */
+        section {
+            position: relative;
+        }
+
+        /* Glowing separator */
+        .glow-separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(99,102,241,0.3), transparent);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Contact form */
+        .form-input {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            width: 100%;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus {
+            border-color: rgba(99,102,241,0.5);
+            background: rgba(99,102,241,0.05);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.25);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stagger-children.active > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger-children.active > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger-children.active > *:nth-child(3) { transition-delay: 0.15s; }
+        .stagger-children.active > *:nth-child(4) { transition-delay: 0.2s; }
+        .stagger-children.active > *:nth-child(5) { transition-delay: 0.25s; }
+        .stagger-children.active > *:nth-child(6) { transition-delay: 0.3s; }
+        .stagger-children.active > *:nth-child(7) { transition-delay: 0.35s; }
+        .stagger-children.active > *:nth-child(8) { transition-delay: 0.4s; }
+
+        .stagger-children.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Experience card */
+        .exp-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+            transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .exp-card:hover::after {
+            height: 100%;
+        }
+
+        /* Tooltip */
+        .tooltip-custom {
+            position: relative;
+        }
+
+        .tooltip-custom::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: #1a1a2e;
+            color: #e0e7ff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.2s;
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+
+        .tooltip-custom:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* Noise overlay */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Grid pattern */
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Success toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(99,102,241,0.3);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(99,102,241,0.15);
+            border: 1px solid rgba(99,102,241,0.3);
+            color: #a5b4fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: rgba(99,102,241,0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white font-sans overflow-x-hidden">
+    <svg width="0" height="0" class="absolute pointer-events-none">
+        <defs>
+            <symbol id="icon-linkedin" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 7.03a1.97 1.97 0 1 0 0-3.94 1.97 1.97 0 0 0 0 3.94ZM20.44 13.05c0-3.46-1.84-5.07-4.3-5.07-1.98 0-2.87 1.09-3.37 1.85V8.5H9.39c.04.88 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.67.13-.91.27-.67.88-1.37 1.9-1.37 1.34 0 1.88 1.03 1.88 2.54V20H20v-6.95c0-3.72-1.99-5.46-4.64-5.46Z"/>
+            </symbol>
+            <symbol id="icon-github" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.41 7.86 10.94.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.19 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.64 1.6.24 2.78.12 3.07.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.77 1.08.77 2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="text-center">
+            <div class="loader-ring mx-auto mb-4"></div>
+            <p class="text-brand-400 text-sm font-mono tracking-widest">LOADING</p>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    N
+                </div>
+                <span class="font-semibold text-sm tracking-wide">NIKUNJ<span class="text-brand-400">.DEV</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#experience" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Experience</a>
+                <a href="#projects" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Skills</a>
+                <a href="#education" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Education</a>
+                <a href="#contact" class="magnetic-btn px-5 py-2 bg-brand-600 text-white text-sm font-medium rounded-full hover:bg-brand-500 transition-all">
+                    Let's Talk
+                </a>
+            </div>
+
+            <button class="md:hidden text-white p-2" id="menuToggle" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8" id="mobileMenu">
+        <button class="absolute top-5 right-6 text-white p-2" id="menuClose" aria-label="Close menu">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <a href="#about" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="#experience" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="#projects" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Skills</a>
+        <a href="#education" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Education</a>
+        <a href="#contact" class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center relative grid-pattern">
+        <!-- Decorative elements -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-brand-600/10 rounded-full blur-3xl float-1"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl float-2"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-32 md:py-0 w-full relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <!-- Left content -->
+                <div class="order-2 md:order-1">
+                    <div class="mb-6 reveal">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600/10 border border-brand-600/20 text-brand-400 text-xs font-mono tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                            AVAILABLE FOR WORK
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 reveal" style="transition-delay:0.1s">
+                        Hi, I'm<br>
+                        <span class="gradient-text">Nikunj Kothiya</span>
+                    </h1>
+
+                    <div class="text-xl sm:text-2xl text-gray-400 font-light mb-8 reveal" style="transition-delay:0.2s">
+                        <span id="typed-text"></span><span class="typing-cursor"></span>
+                    </div>
+
+                    <p class="text-gray-500 text-base leading-relaxed mb-10 max-w-lg reveal" style="transition-delay:0.3s">
+                        Growth-driven and result-oriented Software Engineer with 6+ years of experience in designing and implementing scalable web applications. Active open-source contributor with expertise in Laravel ecosystem.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 reveal" style="transition-delay:0.4s">
+                        <a href="#contact" class="magnetic-btn inline-flex items-center gap-2 px-8 py-3.5 bg-brand-600 text-white font-medium rounded-full hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/25 transition-all duration-300 text-sm">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            Get In Touch
+                        </a>
+                        <a href="#projects" class="magnetic-btn inline-flex items-center gap-2 px-8 py-3.5 border border-white/10 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/20 transition-all duration-300 text-sm">
+                            <i data-lucide="folder-open" class="w-4 h-4"></i>
+                            View Projects
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-4 mt-10 reveal" style="transition-delay:0.5s">
+                        <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="tooltip-custom w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-brand-400 hover:border-brand-500/30 hover:bg-brand-600/10 transition-all" data-tooltip="LinkedIn">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="#icon-linkedin"></use>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/nikunjkothiya" target="_blank" class="tooltip-custom w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-brand-400 hover:border-brand-500/30 hover:bg-brand-600/10 transition-all" data-tooltip="GitHub">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="#icon-github"></use>
+                            </svg>
+                        </a>
+                        <a href="mailto:nikunjkothiya401@gmail.com" class="tooltip-custom w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-brand-400 hover:border-brand-500/30 hover:bg-brand-600/10 transition-all" data-tooltip="Email">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </a>
+                        <a href="tel:+919624909958" class="tooltip-custom w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-brand-400 hover:border-brand-500/30 hover:bg-brand-600/10 transition-all" data-tooltip="Phone">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right content - Photo -->
+                <div class="order-1 md:order-2 flex justify-center reveal-scale">
+                    <div class="relative">
+                        <!-- Orbiting elements -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="orbit-1">
+                                <div class="w-10 h-10 rounded-xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center text-brand-400 backdrop-blur-sm">
+                                    <span class="text-xs font-bold">PHP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="orbit-2">
+                                <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 backdrop-blur-sm">
+                                    <span class="text-xs font-bold">JS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="orbit-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 backdrop-blur-sm">
+                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo -->
+                        <div class="photo-container w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden">
+                            <img src="https://github.com/nikunjkothiya/assets/blob/main/image.png?raw=true"
+                                 alt="Nikunj Kothiya"
+                                 class="w-full h-full object-cover"
+                                 loading="eager">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-600 animate-bounce">
+            <span class="text-[10px] tracking-widest uppercase">Scroll</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="relative z-10 py-8 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-white mb-1" data-target="6">0</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Years Experience</div>
+                </div>
+                <div class="text-center reveal" style="transition-delay:0.1s">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-white mb-1" data-target="15">0</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Projects Delivered</div>
+                </div>
+                <div class="text-center reveal" style="transition-delay:0.2s">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-white mb-1" data-target="4">0</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Companies Worked</div>
+                </div>
+                <div class="text-center reveal" style="transition-delay:0.3s">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-white mb-1" data-target="3">0</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Teams Led</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative z-10 py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">01 — About Me</span>
+                    <h2 class="section-heading text-3xl md:text-4xl font-bold tracking-tight mb-8">
+                        Crafting Digital<br>Experiences
+                    </h2>
+                    <div class="space-y-5 text-gray-400 text-[15px] leading-relaxed">
+                        <p>
+                            I'm a <span class="text-white font-medium">Growth-driven and Result-oriented Software Engineer</span> with over 6 years of experience in designing and implementing web applications across diverse domains — from real estate SaaS platforms to social media applications.
+                        </p>
+                        <p>
+                            My expertise lies in the <span class="text-brand-400">Laravel ecosystem</span>, building multi-tenant architectures, real-time systems with WebSockets, and scalable APIs. I'm also an active open-source contributor with hands-on experience in package development.
+                        </p>
+                        <p>
+                            Beyond code, I lead teams, architect systems from the ground up, and ensure every project meets the highest standards of quality and performance. I believe in continuous learning and building solutions that create real value.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-400 mb-2"></i>
+                            <div class="text-xs text-gray-500">Location</div>
+                            <div class="text-sm text-white font-medium">Ahmedabad, India</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-brand-400 mb-2"></i>
+                            <div class="text-xs text-gray-500">Current Role</div>
+                            <div class="text-sm text-white font-medium">Project Lead</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                            <i data-lucide="globe" class="w-4 h-4 text-brand-400 mb-2"></i>
+                            <div class="text-xs text-gray-500">Work Mode</div>
+                            <div class="text-sm text-white font-medium">Remote</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                            <i data-lucide="heart" class="w-4 h-4 text-brand-400 mb-2"></i>
+                            <div class="text-xs text-gray-500">Status</div>
+                            <div class="text-sm text-white font-medium">Married</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-right">
+                    <div class="relative">
+                        <!-- Code block visual -->
+                        <div class="rounded-2xl bg-[#0d1117] border border-white/5 overflow-hidden shadow-2xl">
+                            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                <span class="ml-2 text-xs text-gray-600 font-mono">about_nikunj.php</span>
+                            </div>
+                            <div class="p-6 font-mono text-sm leading-relaxed">
+                                <div><span class="text-purple-400">&lt;?php</span></div>
+                                <div class="mt-2"><span class="text-blue-400">class</span> <span class="text-green-400">SoftwareEngineer</span> {</div>
+                                <div class="ml-4"><span class="text-blue-400">public</span> <span class="text-yellow-300">$name</span> = <span class="text-orange-300">'Nikunj Kothiya'</span>;</div>
+                                <div class="ml-4"><span class="text-blue-400">public</span> <span class="text-yellow-300">$experience</span> = <span class="text-cyan-300">6</span>;</div>
+                                <div class="ml-4"><span class="text-blue-400">public</span> <span class="text-yellow-300">$specialty</span> = <span class="text-orange-300">'Laravel'</span>;</div>
+                                <div class="ml-4"><span class="text-blue-400">public</span> <span class="text-yellow-300">$passion</span> = <span class="text-orange-300">'Building Scalable Apps'</span>;</div>
+                                <div class="mt-2 ml-4"><span class="text-blue-400">public function</span> <span class="text-green-400">getSkills</span>() {</div>
+                                <div class="ml-8"><span class="text-blue-400">return</span> [</div>
+                                <div class="ml-12"><span class="text-orange-300">'PHP'</span>, <span class="text-orange-300">'Laravel'</span>,</div>
+                                <div class="ml-12"><span class="text-orange-300">'Vue.js'</span>, <span class="text-orange-300">'Node.js'</span>,</div>
+                                <div class="ml-12"><span class="text-orange-300">'MySQL'</span>, <span class="text-orange-300">'AWS'</span></div>
+                                <div class="ml-8">];</div>
+                                <div class="ml-4">}</div>
+                                <div>}</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badges -->
+                        <div class="absolute -top-4 -right-4 px-3 py-2 rounded-xl bg-brand-600/20 border border-brand-500/30 text-brand-400 text-xs font-mono float-1 backdrop-blur-sm">
+                            ⚡ 6+ Years
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-400 text-xs font-mono float-3 backdrop-blur-sm">
+                            🚀 Open Source
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="relative z-10 py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">02 — Career Journey</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Professional Experience</h2>
+            </div>
+
+            <!-- Experience Cards -->
+            <div class="space-y-8">
+                <!-- Experience 1 -->
+                <div class="exp-card card-glow rounded-2xl p-6 md:p-8 reveal" style="transition-delay:0.1s">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-600 to-purple-600 flex items-center justify-center">
+                                <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Project Lead</h3>
+                                    <p class="text-brand-400 text-sm font-medium">Victrom Integrated Computing Solutions</p>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium w-fit">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                                    Oct 2024 — Present
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-xs mb-1">📍 Kuwait — Remote | Freelance</p>
+                            <div class="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">RDUP — Real Estate Management SaaS</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Multi-tenant platform built for Mabanee Group, supporting large-scale mall and building projects across the Arab region. Each project operates under its own subdomain with isolated and secure project management.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 12</span>
+                                    <span class="tech-tag">MySQL-RDS</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Reverb</span>
+                                    <span class="tech-tag">AWS S3</span>
+                                    <span class="tech-tag">Queue</span>
+                                    <span class="tech-tag">PDF Editor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="exp-card card-glow rounded-2xl p-6 md:p-8 reveal" style="transition-delay:0.2s">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
+                                <i data-lucide="code-2" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Senior Software Developer</h3>
+                                    <p class="text-blue-400 text-sm font-medium">Dreamer Technoland</p>
+                                </div>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-medium w-fit">
+                                    Apr 2023 — Aug 2024
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-xs mb-4">📍 Noida, India — Remote</p>
+
+                            <!-- Project 1 -->
+                            <div class="mb-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Paws HUB — Pet Management Multi-Tenant System</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Complete pet management multi-tenant system where pet shops manage services with dynamic pricing. Fully dynamic with role-permissions across all modules.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 10</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Echo Server</span>
+                                    <span class="tech-tag">Subscription</span>
+                                </div>
+                            </div>
+
+                            <!-- Project 2 -->
+                            <div class="mb-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Oak Haven — Massage Booking Platform</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Booking platform for massage therapy. Fixed critical sync bugs with Mindbody API and resolved system crashes during peak loads.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">PHP</span>
+                                    <span class="tech-tag">3rd Party API</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Cron-jobs</span>
+                                </div>
+                            </div>
+
+                            <!-- Project 3 -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Unlimited Power — Management System</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    System for electrical contractors to manage managers, workers, sites, orders, RFQ, PO and leave requests with offline-capable mobile app.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 10</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Expo Push</span>
+                                    <span class="tech-tag">API</span>
+                                    <span class="tech-tag">Offline Online Data Sync</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="exp-card card-glow rounded-2xl p-6 md:p-8 reveal" style="transition-delay:0.3s">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">
+                                <i data-lucide="layers" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Software Developer</h3>
+                                    <p class="text-orange-400 text-sm font-medium">Multipz Technology Limited</p>
+                                </div>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-medium w-fit">
+                                    Apr 2020 — Apr 2023
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-xs mb-1">📍 Ahmedabad, India</p>
+                            <p class="text-gray-600 text-xs mb-4">Started as Junior Developer → Promoted to Software Developer</p>
+
+                            <!-- Project 1 -->
+                            <div class="mb-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Avenues — Permit Management System</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Multi-tenant permit & mall management system for engineers with worker entry/exit verification via mobile app.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 9</span>`
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">AWS EC2</span>
+                                    <span class="tech-tag">FCM</span>``
+                                    <span class="tech-tag">Multi-tenant Single Database</span>
+                                </div>
+                            </div>
+
+                            <!-- Project 2 -->
+                            <div class="mb-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">TreeroseHUB — Automated Order Processing</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Order processing system with real-time dashboard updates via Socket.IO, auto-trip creation, and barcode generation.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 8</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Socket.IO</span>
+                                    <span class="tech-tag">AWS</span>
+                                </div>
+                            </div>
+
+                            <!-- Project 3 -->
+                            <div class="mb-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Socket.IO Quick Chat Service</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Real-time chat service for live streaming with active user counts, live likes, replacing REST API polling.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Socket.IO</span>
+                                    <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">AWS EC2</span>
+                                </div>
+                            </div>
+
+                            <!-- Project 4 -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Wag Buddy — Social Media for Pets</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Social media app for pets with Instagram-like reels, one-to-one chat, parks & pet care centers worldwide. Video compression and auto-alignment.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 8</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Node Socket</span>
+                                    <span class="tech-tag">FCM</span>
+                                    <span class="tech-tag">AWS S3</span>
+                                    <span class="tech-tag">Video Processing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="exp-card card-glow rounded-2xl p-6 md:p-8 reveal" style="transition-delay:0.4s">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Back-end Laravel Intern</h3>
+                                    <p class="text-green-400 text-sm font-medium">Maslow Initiative</p>
+                                </div>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-medium w-fit">
+                                    Jan 2021 — Apr 2021
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-xs mb-4">📍 Delhi, India — Remote</p>
+
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <h4 class="text-white font-semibold text-sm mb-2">Beyond Exams — E-Learning Platform</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                    Free e-learning platform for students. Built APIs for timetable-based classrooms, analytics, and YouTube API integration.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Laravel 7</span>
+                                    <span class="tech-tag">API</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">YouTube API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="relative z-10 py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">03 — Featured Work</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Key Projects</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">A selection of projects that showcase my expertise in building scalable, multi-tenant web applications</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card 1 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.05s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative">
+                        <i data-lucide="building-2" class="w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SAAS</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">RDUP Platform</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Multi-tenant real estate management for Mabanee Group's mall projects across the Arab region.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Laravel 12</span>
+                            <span class="tech-tag">MySQL-RDS</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">AWS-S3</span>
+                            <span class="tech-tag">Reverb</span>
+                            <span class="tech-tag">Multi-tenant Dynamic Database</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.1s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative">
+                        <i data-lucide="paw-print" class="w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">PRODUCT</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">Paws HUB</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Complete multi-tenant pet management system with dynamic pricing and subscription billing.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Laravel 10</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Laravel Echo</span>
+                            <span class="tech-tag">Hostinger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.15s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-orange-900/40 to-red-900/40 flex items-center justify-center relative">
+                        <i data-lucide="clipboard-check" class="w-16 h-16 text-orange-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-orange-500/20 text-orange-400 text-[10px] font-mono">ENTERPRISE</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">Avenues PMS</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Multi-tenant permit & mall management with mobile verification for worker entry/exit.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Laravel 9</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">FCM</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Multi-tenant Single Database</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.2s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center relative">
+                        <i data-lucide="package" class="w-16 h-16 text-purple-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-purple-500/20 text-purple-400 text-[10px] font-mono">AUTOMATION</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">TreeroseHUB</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Automated order processing with real-time dashboards, auto-trip creation, and barcode generation.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Laravel 8</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Socket.IO</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.25s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative">
+                        <i data-lucide="dog" class="w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SOCIAL</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">Wag Buddy</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Social media for pets — reels, chat, parks & care centers worldwide with video processing.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Laravel 8</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">AWS-S3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.3s">
+                    <div class="project-visual h-48 bg-gradient-to-br from-yellow-900/40 to-amber-900/40 flex items-center justify-center relative">
+                        <i data-lucide="zap" class="w-16 h-16 text-yellow-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-yellow-500/20 text-yellow-400 text-[10px] font-mono">REAL-TIME</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">Socket Quick Chat</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Real-time chat service for live streaming with active user counts, likes, replacing REST polling.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Socket.IO</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative z-10 py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">04 — Technical Arsenal</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Skills & Technologies</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Programming Skills -->
+                <div class="card-glow rounded-2xl p-8 reveal-left">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600/20 flex items-center justify-center">
+                            <i data-lucide="code" class="w-5 h-5 text-brand-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Programming</h3>
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">PHP / Laravel</span><span class="text-xs text-brand-400 font-mono">95%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400" style="--skill-width:95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">JavaScript / Node.js</span><span class="text-xs text-brand-400 font-mono">80%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-400" style="--skill-width:80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">HTML5 / CSS3</span><span class="text-xs text-brand-400 font-mono">95%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400" style="--skill-width:95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">Vue.js</span><span class="text-xs text-brand-400 font-mono">60%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-green-600 to-green-400" style="--skill-width:60%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">Socket.IO / Reverb</span><span class="text-xs text-brand-400 font-mono">85%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-purple-600 to-purple-400" style="--skill-width:85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Skills -->
+                <div class="card-glow rounded-2xl p-8 reveal-right">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-600/20 flex items-center justify-center">
+                            <i data-lucide="server" class="w-5 h-5 text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Infrastructure & Tools</h3>
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">AWS (EC2, S3, RDS)</span><span class="text-xs text-purple-400 font-mono">95%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-purple-600 to-purple-400" style="--skill-width:95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">MySQL / Elastic Search</span><span class="text-xs text-purple-400 font-mono">90%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-cyan-600 to-cyan-400" style="--skill-width:90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">Docker / CI/CD</span><span class="text-xs text-purple-400 font-mono">80%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-400" style="--skill-width:80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">Redis / Queue Systems</span><span class="text-xs text-purple-400 font-mono">90%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-red-600 to-red-400" style="--skill-width:90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">Git / DevOps Tools</span><span class="text-xs text-purple-400 font-mono">95%</span></div>
+                            <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400" style="--skill-width:95%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Marquee -->
+            <div class="overflow-hidden py-6 reveal">
+                <div class="marquee-track">
+                    <div class="flex gap-4 mr-4">
+                        <span class="tech-tag text-sm px-5 py-2">PHP</span>
+                        <span class="tech-tag text-sm px-5 py-2">Laravel</span>
+                        <span class="tech-tag text-sm px-5 py-2">Lumen</span>
+                        <span class="tech-tag text-sm px-5 py-2">JavaScript</span>
+                        <span class="tech-tag text-sm px-5 py-2">Node.js</span>
+                        <span class="tech-tag text-sm px-5 py-2">Vue.js</span>
+                        <span class="tech-tag text-sm px-5 py-2">Socket.IO</span>
+                        <span class="tech-tag text-sm px-5 py-2">Reverb</span>
+                        <span class="tech-tag text-sm px-5 py-2">MySQL</span>
+                        <span class="tech-tag text-sm px-5 py-2">Redis</span>
+                        <span class="tech-tag text-sm px-5 py-2">AWS</span>
+                        <span class="tech-tag text-sm px-5 py-2">Docker</span>
+                        <span class="tech-tag text-sm px-5 py-2">S3</span>
+                        <span class="tech-tag text-sm px-5 py-2">FCM</span>
+                        <span class="tech-tag text-sm px-5 py-2">Elastic Search</span>
+                        <span class="tech-tag text-sm px-5 py-2">Swagger</span>
+                        <span class="tech-tag text-sm px-5 py-2">Postman</span>
+                    </div>
+                    <div class="flex gap-4 mr-4">
+                        <span class="tech-tag text-sm px-5 py-2">PHP</span>
+                        <span class="tech-tag text-sm px-5 py-2">Laravel</span>
+                        <span class="tech-tag text-sm px-5 py-2">Lumen</span>
+                        <span class="tech-tag text-sm px-5 py-2">JavaScript</span>
+                        <span class="tech-tag text-sm px-5 py-2">Node.js</span>
+                        <span class="tech-tag text-sm px-5 py-2">Vue.js</span>
+                        <span class="tech-tag text-sm px-5 py-2">Socket.IO</span>
+                        <span class="tech-tag text-sm px-5 py-2">Reverb</span>
+                        <span class="tech-tag text-sm px-5 py-2">MySQL</span>
+                        <span class="tech-tag text-sm px-5 py-2">Redis</span>
+                        <span class="tech-tag text-sm px-5 py-2">AWS</span>
+                        <span class="tech-tag text-sm px-5 py-2">Docker</span>
+                        <span class="tech-tag text-sm px-5 py-2">S3</span>
+                        <span class="tech-tag text-sm px-5 py-2">FCM</span>
+                        <span class="tech-tag text-sm px-5 py-2">Elastic Search</span>
+                        <span class="tech-tag text-sm px-5 py-2">Swagger</span>
+                        <span class="tech-tag text-sm px-5 py-2">Postman</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specializations -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 stagger-children" id="specGrid">
+                <div class="card-glow rounded-xl p-5 text-center">
+                    <i data-lucide="building" class="w-8 h-8 text-brand-400 mx-auto mb-3"></i>
+                    <div class="text-sm font-semibold text-white">Multi-Tenant</div>
+                    <div class="text-xs text-gray-500 mt-1">Architecture</div>
+                </div>
+                <div class="card-glow rounded-xl p-5 text-center">
+                    <i data-lucide="zap" class="w-8 h-8 text-yellow-400 mx-auto mb-3"></i>
+                    <div class="text-sm font-semibold text-white">Real-Time</div>
+                    <div class="text-xs text-gray-500 mt-1">WebSockets</div>
+                </div>
+                <div class="card-glow rounded-xl p-5 text-center">
+                    <i data-lucide="cloud" class="w-8 h-8 text-blue-400 mx-auto mb-3"></i>
+                    <div class="text-sm font-semibold text-white">Cloud / AWS</div>
+                    <div class="text-xs text-gray-500 mt-1">Deployment</div>
+                </div>
+                <div class="card-glow rounded-xl p-5 text-center">
+                    <i data-lucide="users" class="w-8 h-8 text-green-400 mx-auto mb-3"></i>
+                    <div class="text-sm font-semibold text-white">Team Lead</div>
+                    <div class="text-xs text-gray-500 mt-1">Management</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
+    <!-- Education Section -->
+    <section id="education" class="relative z-10 py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">05 — Education</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Academic Background</h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- BE -->
+                <div class="card-glow rounded-2xl p-8 reveal">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-600 to-purple-600 flex items-center justify-center">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">B.E. in Mechanical Engineering</h3>
+                            <p class="text-brand-400 text-sm font-medium">Government Engineering College, Modasa</p>
+                            <p class="text-gray-500 text-xs mt-1">Gujarat Technological University (GTU)</p>
+                            <div class="flex items-center gap-4 mt-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-600/10 border border-brand-600/20 text-brand-400 text-xs font-semibold">
+                                    <i data-lucide="award" class="w-3 h-3"></i>
+                                    CGPA: 8.09/10
+                                </span>
+                                <span class="text-gray-500 text-xs">2018</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HSC -->
+                <div class="card-glow rounded-2xl p-8 reveal" style="transition-delay:0.1s">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
+                                <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">HSC (XII)</h3>
+                            <p class="text-blue-400 text-sm font-medium">Vidhyanagar High School, Ahmedabad</p>
+                            <p class="text-gray-500 text-xs mt-1">Gujarat Secondary Education Board (GSEB)</p>
+                            <div class="flex items-center gap-4 mt-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-xs font-semibold">
+                                    <i data-lucide="award" class="w-3 h-3"></i>
+                                    83.00%
+                                </span>
+                                <span class="text-gray-500 text-xs">2014</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SSC -->
+                <div class="card-glow rounded-2xl p-8 reveal" style="transition-delay:0.2s">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center">
+                                <i data-lucide="school" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">SSC (X)</h3>
+                            <p class="text-green-400 text-sm font-medium">Vidhyanagar High School, Ahmedabad</p>
+                            <p class="text-gray-500 text-xs mt-1">Gujarat Secondary Education Board (GSEB)</p>
+                            <div class="flex items-center gap-4 mt-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-600/10 border border-green-600/20 text-green-400 text-xs font-semibold">
+                                    <i data-lucide="award" class="w-3 h-3"></i>
+                                    91.04%
+                                </span>
+                                <span class="text-gray-500 text-xs">2012</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative z-10 py-24 md:py-32 overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">06 — Get In Touch</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Let's Work Together</h2>
+                <p class="text-gray-500 mt-4 max-w-xl mx-auto">Have a project in mind or looking for a skilled software engineer? I'd love to hear from you.</p>
+            </div>
+
+            <!-- Big CTA Block -->
+            <div class="reveal-scale mb-16">
+                <div class="relative rounded-3xl overflow-hidden">
+                    <!-- Animated gradient background -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/60 via-purple-900/40 to-brand-900/60"></div>
+                    <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+                    <!-- Floating orbs -->
+                    <div class="absolute top-10 left-10 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl float-1"></div>
+                    <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl float-2"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-600/5 rounded-full blur-3xl float-3"></div>
+
+                    <div class="relative z-10 py-16 md:py-24 px-8 text-center">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-300 text-xs font-mono tracking-wider mb-8">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                            CURRENTLY AVAILABLE FOR FREELANCE & FULL-TIME
+                        </div>
+
+                        <h3 class="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                            Have an idea?<br>
+                            <span class="gradient-text">Let's make it real.</span>
+                        </h3>
+
+                        <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                            I'm always excited to work on ambitious projects. Whether you need a full system architecture, a scalable SaaS platform, or a talented lead for your engineering team — let's connect.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="mailto:nikunjkothiya401@gmail.com" class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-500 hover:shadow-xl hover:shadow-brand-600/25 transition-all duration-300 text-sm group">
+                                <i data-lucide="mail" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                                Drop me an Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white font-semibold rounded-full hover:bg-white/5 hover:border-white/25 transition-all duration-300 text-sm group">
+                                <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#icon-linkedin"></use>
+                                </svg>
+                                Connect on LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children" id="contactGrid">
+
+                <!-- Email -->
+                <a href="mailto:nikunjkothiya401@gmail.com" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-600 group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="mail" class="w-6 h-6 text-brand-400 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">Email</div>
+                    <div class="text-sm text-white font-medium break-all">nikunjkothiya401@gmail.com</div>
+                    <div class="mt-3 flex items-center justify-center gap-1 text-brand-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Send email</span>
+                        <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </div>
+                </a>
+
+                <!-- Phone -->
+                <a href="tel:+919624909958" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-green-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="phone" class="w-6 h-6 text-green-400 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">Phone</div>
+                    <div class="text-sm text-white font-medium">+91 96249 09958</div>
+                    <div class="mt-3 flex items-center justify-center gap-1 text-green-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Call now</span>
+                        <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </div>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
+                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="#icon-linkedin"></use>
+                        </svg>
+                    </div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">LinkedIn</div>
+                    <div class="text-sm text-white font-medium">nikunj-kothiya</div>
+                    <div class="mt-3 flex items-center justify-center gap-1 text-blue-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Visit profile</span>
+                        <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/nikunjkothiya" target="_blank" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-600 group-hover:scale-110 transition-all duration-300">
+                        <svg class="w-6 h-6 text-purple-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="#icon-github"></use>
+                        </svg>
+                    </div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">GitHub</div>
+                    <div class="text-sm text-white font-medium">nikunjkothiya</div>
+                    <div class="mt-3 flex items-center justify-center gap-1 text-purple-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>View repos</span>
+                        <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Location & Info Bar -->
+            <div class="mt-8 reveal">
+                <div class="card-glow rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-600/15 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider">Location</div>
+                            <div class="text-sm text-white font-medium">Ahmedabad, Gujarat, India</div>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block w-px h-8 bg-white/10"></div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-600/15 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="globe" class="w-5 h-5 text-cyan-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider">Work Mode</div>
+                            <div class="text-sm text-white font-medium">Open to Remote & On-site</div>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block w-px h-8 bg-white/10"></div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-pink-600/15 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="languages" class="w-5 h-5 text-pink-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider">Languages</div>
+                            <div class="text-sm text-white font-medium">English, Hindi, Gujarati</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Response Time Badge -->
+            <div class="mt-8 text-center reveal">
+                <div class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.02] border border-white/5">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span class="text-sm text-gray-400">Usually responds within <span class="text-white font-medium">a few hours</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs">N</div>
+                    <span class="text-sm text-gray-500">© 2025 Nikunj Kothiya. All rights reserved.</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="text-gray-600 hover:text-brand-400 transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="#icon-linkedin"></use>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/nikunjkothiya" target="_blank" class="text-gray-600 hover:text-brand-400 transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="#icon-github"></use>
+                        </svg>
+                    </a>
+                    <a href="mailto:nikunjkothiya401@gmail.com" class="text-gray-600 hover:text-brand-400 transition-colors"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+                <div class="text-xs text-gray-600">
+                    Crafted with <span class="text-red-500">❤</span> and Laravel spirit
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="flex items-center gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span>Message sent successfully!</span>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </button>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ==================== LOADING SCREEN ====================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 800);
+        });
+
+        // ==================== CURSOR GLOW ====================
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorGlow.style.left = mouseX + 'px';
+            cursorGlow.style.top = mouseY + 'px';
+        });
+
+        // ==================== PARTICLES ====================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.4 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        // Create particles
+        for (let i = 0; i < 60; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.06 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // ==================== TYPING EFFECT ====================
+        const roles = [
+            'Software Engineer',
+            'Laravel Expert',
+            'Project Lead',
+            'System Architect',
+            'Open Source Contributor',
+            'Team Leader'
+        ];
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedText = document.getElementById('typed-text');
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                speed = 500;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+
+        // ==================== SCROLL REVEAL ====================
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ==================== SKILL BAR ANIMATION ====================
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBars.forEach(bar => skillObserver.observe(bar));
+
+        // ==================== COUNTER ANIMATION ====================
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => counterObserver.observe(el));
+
+        function animateCounter(el, target) {
+            let current = 0;
+            const increment = target / 60;
+            const duration = 2000;
+            const stepTime = duration / 60;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current) + '+';
+            }, stepTime);
+        }
+
+        // ==================== NAVBAR SCROLL ====================
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll > 100) {
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // ==================== ACTIVE NAV LINK ====================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ==================== MOBILE MENU ====================
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ==================== BACK TO TOP ====================
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==================== CONTACT FORM ====================
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Show toast
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // ==================== MAGNETIC BUTTONS ====================
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
