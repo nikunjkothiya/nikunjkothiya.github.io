@@ -10,6 +10,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
+        (() => {
+            let storedTheme = null;
+            try {
+                storedTheme = localStorage.getItem('portfolio-theme');
+            } catch (error) {
+                storedTheme = null;
+            }
+            const initialTheme = storedTheme === 'light' ? 'light' : 'dark';
+            document.documentElement.classList.add(initialTheme === 'light' ? 'theme-light' : 'theme-dark');
+            document.documentElement.style.colorScheme = initialTheme;
+        })();
+    </script>
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -36,12 +49,114 @@
         }
     </script>
     <style>
+        :root {
+            color-scheme: dark;
+            --page-bg: #0a0a0a;
+            --page-text: #ffffff;
+            --heading-text: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --text-tertiary: #6b7280;
+            --text-quaternary: #4b5563;
+            --scrollbar-track: #0a0a0a;
+            --scrollbar-thumb: #4f46e5;
+            --scrollbar-thumb-hover: #6366f1;
+            --cursor-glow-bg: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+            --nav-bg: rgba(10,10,10,0.8);
+            --nav-border: rgba(255,255,255,0.05);
+            --nav-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            --card-bg: rgba(255,255,255,0.03);
+            --card-border: rgba(255,255,255,0.06);
+            --card-hover-bg: rgba(255,255,255,0.06);
+            --soft-surface-bg: rgba(255,255,255,0.02);
+            --soft-surface-border: rgba(255,255,255,0.05);
+            --timeline-border: #1a1a2e;
+            --tooltip-bg: #1a1a2e;
+            --tooltip-text: #e0e7ff;
+            --tooltip-border: rgba(99,102,241,0.2);
+            --grid-line: rgba(99,102,241,0.03);
+            --loading-bg: #0a0a0a;
+            --separator-bg: linear-gradient(to right, transparent, rgba(99,102,241,0.3), transparent);
+            --input-bg: rgba(255,255,255,0.03);
+            --input-border: rgba(255,255,255,0.08);
+            --input-text: #ffffff;
+            --input-placeholder: rgba(255,255,255,0.25);
+            --mobile-menu-bg: rgba(10,10,10,0.95);
+            --back-to-top-bg: rgba(99,102,241,0.15);
+            --back-to-top-border: rgba(99,102,241,0.3);
+            --back-to-top-text: #a5b4fc;
+            --outline-btn-text: #ffffff;
+            --outline-btn-border: rgba(255,255,255,0.1);
+            --outline-btn-hover-bg: rgba(255,255,255,0.05);
+            --outline-btn-hover-border: rgba(255,255,255,0.2);
+            --code-window-bg: #0d1117;
+            --code-window-bar-bg: transparent;
+            --cta-bg: linear-gradient(135deg, rgba(49,46,129,0.6), rgba(88,28,135,0.4), rgba(49,46,129,0.6));
+            --particle-rgb: 99, 102, 241;
+            --particle-line-opacity: 0.06;
+            --noise-opacity: 0.03;
+        }
+
+        html.theme-light {
+            color-scheme: light;
+            --page-bg: #f8fafc;
+            --page-text: #0f172a;
+            --heading-text: #0f172a;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-tertiary: #475569;
+            --text-quaternary: #64748b;
+            --scrollbar-track: #e2e8f0;
+            --scrollbar-thumb: #6366f1;
+            --scrollbar-thumb-hover: #4f46e5;
+            --cursor-glow-bg: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+            --nav-bg: rgba(248,250,252,0.82);
+            --nav-border: rgba(148,163,184,0.22);
+            --nav-shadow: 0 16px 40px rgba(15,23,42,0.08);
+            --card-bg: rgba(255,255,255,0.72);
+            --card-border: rgba(148,163,184,0.18);
+            --card-hover-bg: rgba(255,255,255,0.92);
+            --soft-surface-bg: rgba(255,255,255,0.82);
+            --soft-surface-border: rgba(148,163,184,0.16);
+            --timeline-border: #f8fafc;
+            --tooltip-bg: #ffffff;
+            --tooltip-text: #0f172a;
+            --tooltip-border: rgba(99,102,241,0.18);
+            --grid-line: rgba(99,102,241,0.08);
+            --loading-bg: #f8fafc;
+            --separator-bg: linear-gradient(to right, transparent, rgba(99,102,241,0.22), transparent);
+            --input-bg: rgba(255,255,255,0.88);
+            --input-border: rgba(148,163,184,0.28);
+            --input-text: #0f172a;
+            --input-placeholder: rgba(71,85,105,0.7);
+            --mobile-menu-bg: rgba(248,250,252,0.96);
+            --back-to-top-bg: rgba(99,102,241,0.12);
+            --back-to-top-border: rgba(99,102,241,0.22);
+            --back-to-top-text: #4338ca;
+            --outline-btn-text: #0f172a;
+            --outline-btn-border: rgba(148,163,184,0.28);
+            --outline-btn-hover-bg: rgba(99,102,241,0.08);
+            --outline-btn-hover-border: rgba(99,102,241,0.22);
+            --code-window-bg: #f8fafc;
+            --code-window-bar-bg: rgba(255,255,255,0.7);
+            --cta-bg: linear-gradient(135deg, rgba(238,242,255,0.96), rgba(224,231,255,0.88), rgba(248,250,252,0.98));
+            --particle-rgb: 99, 102, 241;
+            --particle-line-opacity: 0.11;
+            --noise-opacity: 0.02;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+        body.theme-body {
+            background: var(--page-bg);
+            color: var(--page-text);
+            transition: background-color 0.45s ease, color 0.45s ease;
+        }
 
         /* Cursor glow */
         .cursor-glow {
@@ -49,7 +164,7 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+            background: var(--cursor-glow-bg);
             pointer-events: none;
             z-index: 0;
             transform: translate(-50%, -50%);
@@ -210,7 +325,7 @@
             height: 16px;
             border-radius: 50%;
             background: #6366f1;
-            border: 3px solid #1a1a2e;
+            border: 3px solid var(--timeline-border);
             z-index: 2;
             transition: all 0.3s;
         }
@@ -254,9 +369,10 @@
         /* Card hover glow */
         .card-glow {
             position: relative;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+            backdrop-filter: blur(14px);
         }
 
         .card-glow::before {
@@ -272,16 +388,17 @@
 
         .card-glow:hover::before { opacity: 1; }
         .card-glow:hover {
-            background: rgba(255,255,255,0.06);
+            background: var(--card-hover-bg);
             border-color: rgba(99,102,241,0.3);
             transform: translateY(-4px);
         }
 
         /* Nav styles */
         .nav-glass {
-            background: rgba(10,10,10,0.8);
+            background: var(--nav-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--nav-border);
+            transition: background-color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
         }
 
         .nav-link {
@@ -364,6 +481,19 @@
             transform: translateY(-1px);
         }
 
+        html.theme-light .tech-tag {
+            background: rgba(99,102,241,0.09);
+            border-color: rgba(99,102,241,0.22);
+            color: #6366f1;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+        }
+
+        html.theme-light .tech-tag:hover {
+            background: rgba(99,102,241,0.16);
+            border-color: rgba(99,102,241,0.32);
+            color: #4338ca;
+        }
+
         /* Section heading decoration */
         .section-heading {
             position: relative;
@@ -396,7 +526,7 @@
         .loading-screen {
             position: fixed;
             inset: 0;
-            background: #0a0a0a;
+            background: var(--loading-bg);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -427,6 +557,7 @@
         .project-visual {
             position: relative;
             overflow: hidden;
+            isolation: isolate;
         }
 
         .project-visual::before {
@@ -437,6 +568,146 @@
             z-index: 1;
         }
 
+        .project-icon,
+        .project-badge {
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-icon {
+            transition: transform 0.5s ease, opacity 0.35s ease, color 0.35s ease, filter 0.35s ease;
+        }
+
+        .project-badge {
+            border: 1px solid transparent;
+            backdrop-filter: blur(10px);
+            transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+        }
+
+        .contact-method-card,
+        .contact-method-icon-wrap,
+        .contact-method-icon {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .contact-method-icon {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-method-icon use,
+        .contact-method-icon path {
+            transition: fill 0.3s ease, stroke 0.3s ease;
+        }
+
+        html.theme-light .contact-method-card:hover .contact-method-icon {
+            color: #ffffff !important;
+            opacity: 1;
+        }
+
+        html.theme-light .contact-method-card:hover .contact-method-icon.lucide,
+        html.theme-light .contact-method-card:hover .contact-method-icon.lucide path {
+            fill: none !important;
+            stroke: currentColor !important;
+        }
+
+        html.theme-light .contact-method-card:hover .contact-method-icon:not(.lucide) use,
+        html.theme-light .contact-method-card:hover .contact-method-icon:not(.lucide) path {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .project-brand {
+            background: linear-gradient(135deg, rgba(49,46,129,0.42), rgba(126,34,206,0.28));
+        }
+
+        .project-blue {
+            background: linear-gradient(135deg, rgba(30,58,138,0.4), rgba(8,145,178,0.26));
+        }
+
+        .project-orange {
+            background: linear-gradient(135deg, rgba(154,52,18,0.38), rgba(185,28,28,0.24));
+        }
+
+        .project-purple {
+            background: linear-gradient(135deg, rgba(88,28,135,0.38), rgba(190,24,93,0.24));
+        }
+
+        .project-green {
+            background: linear-gradient(135deg, rgba(20,83,45,0.38), rgba(13,148,136,0.24));
+        }
+
+        .project-yellow {
+            background: linear-gradient(135deg, rgba(113,63,18,0.4), rgba(180,83,9,0.24));
+        }
+
+        html.theme-light .project-visual::before {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+        }
+
+        html.theme-light .project-brand {
+            background: linear-gradient(135deg, rgba(129,140,248,0.45), rgba(196,181,253,0.38));
+        }
+
+        html.theme-light .project-blue {
+            background: linear-gradient(135deg, rgba(96,165,250,0.4), rgba(165,243,252,0.34));
+        }
+
+        html.theme-light .project-orange {
+            background: linear-gradient(135deg, rgba(253,186,116,0.38), rgba(254,202,202,0.34));
+        }
+
+        html.theme-light .project-purple {
+            background: linear-gradient(135deg, rgba(196,181,253,0.42), rgba(244,114,182,0.26));
+        }
+
+        html.theme-light .project-green {
+            background: linear-gradient(135deg, rgba(134,239,172,0.34), rgba(153,246,228,0.28));
+        }
+
+        html.theme-light .project-yellow {
+            background: linear-gradient(135deg, rgba(253,224,71,0.3), rgba(251,191,36,0.24));
+        }
+
+        html.theme-light .project-icon {
+            opacity: 0.95 !important;
+            filter: saturate(1.15);
+        }
+
+        html.theme-light .project-badge {
+            font-weight: 600;
+        }
+
+        html.theme-light .project-badge-green {
+            background: rgba(34,197,94,0.14) !important;
+            border-color: rgba(34,197,94,0.18);
+            color: #15803d !important;
+        }
+
+        html.theme-light .project-badge-brand {
+            background: rgba(99,102,241,0.14) !important;
+            border-color: rgba(99,102,241,0.18);
+            color: #4338ca !important;
+        }
+
+        html.theme-light .project-badge-orange {
+            background: rgba(249,115,22,0.14) !important;
+            border-color: rgba(249,115,22,0.18);
+            color: #c2410c !important;
+        }
+
+        html.theme-light .project-badge-purple {
+            background: rgba(168,85,247,0.14) !important;
+            border-color: rgba(168,85,247,0.18);
+            color: #7e22ce !important;
+        }
+
+        html.theme-light .project-badge-yellow {
+            background: rgba(234,179,8,0.16) !important;
+            border-color: rgba(234,179,8,0.2);
+            color: #a16207 !important;
+        }
+
         /* Smooth section transitions */
         section {
             position: relative;
@@ -445,7 +716,7 @@
         /* Glowing separator */
         .glow-separator {
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(99,102,241,0.3), transparent);
+            background: var(--separator-bg);
         }
 
         /* Mobile menu */
@@ -460,9 +731,9 @@
 
         /* Contact form */
         .form-input {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: white;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            color: var(--input-text);
             padding: 14px 18px;
             border-radius: 12px;
             font-size: 15px;
@@ -479,7 +750,7 @@
         }
 
         .form-input::placeholder {
-            color: rgba(255,255,255,0.25);
+            color: var(--input-placeholder);
         }
 
         /* Stagger children */
@@ -535,8 +806,8 @@
             bottom: calc(100% + 8px);
             left: 50%;
             transform: translateX(-50%) scale(0.9);
-            background: #1a1a2e;
-            color: #e0e7ff;
+            background: var(--tooltip-bg);
+            color: var(--tooltip-text);
             padding: 6px 12px;
             border-radius: 8px;
             font-size: 12px;
@@ -544,7 +815,8 @@
             pointer-events: none;
             opacity: 0;
             transition: all 0.2s;
-            border: 1px solid rgba(99,102,241,0.2);
+            border: 1px solid var(--tooltip-border);
+            box-shadow: 0 12px 30px rgba(15,23,42,0.08);
         }
 
         .tooltip-custom:hover::after {
@@ -558,15 +830,15 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.03;
+            opacity: var(--noise-opacity);
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Grid pattern */
         .grid-pattern {
             background-image:
-                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
             background-size: 60px 60px;
         }
 
@@ -601,9 +873,9 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(99,102,241,0.15);
-            border: 1px solid rgba(99,102,241,0.3);
-            color: #a5b4fc;
+            background: var(--back-to-top-bg);
+            border: 1px solid var(--back-to-top-border);
+            color: var(--back-to-top-text);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -624,9 +896,147 @@
             background: rgba(99,102,241,0.3);
             transform: translateY(-2px);
         }
+
+        .mobile-menu {
+            background: var(--mobile-menu-bg) !important;
+        }
+
+        .code-window {
+            background: var(--code-window-bg) !important;
+            transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease;
+        }
+
+        .code-window-bar {
+            background: var(--code-window-bar-bg);
+            transition: background-color 0.45s ease, border-color 0.45s ease;
+        }
+
+        .contact-cta-bg {
+            background: var(--cta-bg) !important;
+            transition: background 0.45s ease;
+        }
+
+        .theme-outline-button {
+            color: var(--outline-btn-text) !important;
+            border-color: var(--outline-btn-border) !important;
+        }
+
+        .theme-outline-button:hover {
+            background: var(--outline-btn-hover-bg) !important;
+            border-color: var(--outline-btn-hover-border) !important;
+        }
+
+        .theme-toggle-btn {
+            position: relative;
+            width: 58px;
+            height: 34px;
+            border-radius: 9999px;
+            border: 1px solid var(--nav-border);
+            background: var(--soft-surface-bg);
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(99,102,241,0.15);
+        }
+
+        .theme-toggle-track {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+        }
+
+        .theme-toggle-icon {
+            width: 14px;
+            height: 14px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.35s ease, opacity 0.35s ease;
+        }
+
+        .theme-toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 26px;
+            height: 26px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #ffffff, #dbeafe);
+            box-shadow: 0 8px 18px rgba(15,23,42,0.18);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease;
+        }
+
+        html.theme-light .theme-toggle-thumb {
+            transform: translateX(24px);
+            background: linear-gradient(135deg, #fef3c7, #f59e0b);
+        }
+
+        html.theme-light .theme-toggle-btn {
+            color: #4338ca;
+        }
+
+        html.theme-light #menuToggle,
+        html.theme-light #menuClose {
+            color: var(--heading-text);
+        }
+
+        html.theme-light [class~="text-white"]:not(a):not(button):not(i):not(svg):not(path):not([class*="bg-gradient"]):not([class*="bg-brand-600"]):not([class*="bg-blue-600"]):not([class*="bg-green-600"]):not([class*="bg-orange-600"]):not([class*="bg-purple-600"]):not([class*="bg-yellow-500"]):not([class*="bg-green-500"]) {
+            color: var(--heading-text) !important;
+        }
+
+        html.theme-light [class~="text-gray-300"] { color: var(--text-secondary) !important; }
+        html.theme-light [class~="text-gray-400"] { color: var(--text-secondary) !important; }
+        html.theme-light [class~="text-gray-500"] { color: var(--text-tertiary) !important; }
+        html.theme-light [class~="text-gray-600"] { color: var(--text-quaternary) !important; }
+        html.theme-light [class~="text-gray-300"][class*="hover:text-white"]:hover,
+        html.theme-light [class~="text-gray-400"][class*="hover:text-white"]:hover,
+        html.theme-light [class~="text-gray-500"][class*="hover:text-white"]:hover,
+        html.theme-light [class~="text-gray-600"][class*="hover:text-white"]:hover {
+            color: var(--heading-text) !important;
+        }
+
+        html.theme-light [class~="text-brand-300"] { color: #4f46e5 !important; }
+        html.theme-light [class~="text-brand-400"] { color: #4338ca !important; }
+        html.theme-light [class~="text-blue-400"] { color: #2563eb !important; }
+        html.theme-light [class~="text-purple-400"] { color: #7c3aed !important; }
+        html.theme-light [class~="text-green-400"] { color: #16a34a !important; }
+        html.theme-light [class~="text-orange-400"] { color: #ea580c !important; }
+        html.theme-light [class~="text-yellow-400"] { color: #ca8a04 !important; }
+        html.theme-light [class~="text-cyan-400"] { color: #0891b2 !important; }
+        html.theme-light [class~="text-pink-400"] { color: #db2777 !important; }
+
+        html.theme-light [class~="border-white/5"] { border-color: rgba(148,163,184,0.16) !important; }
+        html.theme-light [class~="border-white/10"] { border-color: rgba(148,163,184,0.22) !important; }
+        html.theme-light [class~="border-white/15"] { border-color: rgba(148,163,184,0.24) !important; }
+        html.theme-light [class~="border-white/20"] { border-color: rgba(148,163,184,0.28) !important; }
+
+        html.theme-light [class~="bg-white/[0.02]"] { background: var(--soft-surface-bg) !important; }
+        html.theme-light [class~="bg-white/5"] { background: rgba(148,163,184,0.12) !important; }
+        html.theme-light [class~="bg-white/10"] { background: rgba(148,163,184,0.16) !important; }
+        html.theme-light [class~="hover:bg-white/5"]:hover { background: rgba(148,163,184,0.16) !important; }
+        html.theme-light [class~="hover:border-white/20"]:hover { border-color: rgba(99,102,241,0.22) !important; }
+        html.theme-light [class~="hover:border-white/25"]:hover { border-color: rgba(99,102,241,0.24) !important; }
+        html.theme-light [class~="bg-[#0d1117]"] { background: var(--code-window-bg) !important; }
+        html.theme-light [class~="bg-[#0a0a0a]/95"] { background: var(--mobile-menu-bg) !important; }
+        html.theme-light [class~="border-y"][class~="border-white/5"],
+        html.theme-light [class~="border-t"][class~="border-white/5"] {
+            border-color: rgba(148,163,184,0.16) !important;
+        }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-white font-sans overflow-x-hidden">
+<body class="theme-body font-sans overflow-x-hidden">
     <svg width="0" height="0" class="absolute pointer-events-none">
         <defs>
             <symbol id="icon-linkedin" viewBox="0 0 24 24">
@@ -671,14 +1081,32 @@
                 <a href="#projects" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Projects</a>
                 <a href="#skills" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Skills</a>
                 <a href="#education" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Education</a>
+                <button class="theme-toggle-btn" id="themeToggleDesktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+                    <span class="sr-only">Toggle theme</span>
+                    <span class="theme-toggle-track">
+                        <i data-lucide="moon" class="theme-toggle-icon"></i>
+                        <i data-lucide="sun" class="theme-toggle-icon"></i>
+                    </span>
+                    <span class="theme-toggle-thumb"></span>
+                </button>
                 <a href="#contact" class="magnetic-btn px-5 py-2 bg-brand-600 text-white text-sm font-medium rounded-full hover:bg-brand-500 transition-all">
                     Let's Talk
                 </a>
             </div>
 
-            <button class="md:hidden text-white p-2" id="menuToggle" aria-label="Toggle menu">
-                <i data-lucide="menu" class="w-5 h-5"></i>
-            </button>
+            <div class="flex items-center gap-3 md:hidden">
+                <button class="theme-toggle-btn" id="themeToggleMobile" type="button" aria-label="Switch to light theme" aria-pressed="false">
+                    <span class="sr-only">Toggle theme</span>
+                    <span class="theme-toggle-track">
+                        <i data-lucide="moon" class="theme-toggle-icon"></i>
+                        <i data-lucide="sun" class="theme-toggle-icon"></i>
+                    </span>
+                    <span class="theme-toggle-thumb"></span>
+                </button>
+                <button class="text-white p-2" id="menuToggle" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -730,7 +1158,7 @@
                             <i data-lucide="send" class="w-4 h-4"></i>
                             Get In Touch
                         </a>
-                        <a href="#projects" class="magnetic-btn inline-flex items-center gap-2 px-8 py-3.5 border border-white/10 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/20 transition-all duration-300 text-sm">
+                        <a href="#projects" class="theme-outline-button magnetic-btn inline-flex items-center gap-2 px-8 py-3.5 border border-white/10 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/20 transition-all duration-300 text-sm">
                             <i data-lucide="folder-open" class="w-4 h-4"></i>
                             View Projects
                         </a>
@@ -874,8 +1302,8 @@
                 <div class="reveal-right">
                     <div class="relative">
                         <!-- Code block visual -->
-                        <div class="rounded-2xl bg-[#0d1117] border border-white/5 overflow-hidden shadow-2xl">
-                            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+                        <div class="code-window rounded-2xl bg-[#0d1117] border border-white/5 overflow-hidden shadow-2xl">
+                            <div class="code-window-bar flex items-center gap-2 px-4 py-3 border-b border-white/5">
                                 <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
@@ -1059,10 +1487,10 @@
                                     Multi-tenant permit & mall management system for engineers with worker entry/exit verification via mobile app.
                                 </p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag">Laravel 9</span>`
+                                    <span class="tech-tag">Laravel 9</span>
                                     <span class="tech-tag">MySQL</span>
                                     <span class="tech-tag">AWS EC2</span>
-                                    <span class="tech-tag">FCM</span>``
+                                    <span class="tech-tag">FCM</span>
                                     <span class="tech-tag">Multi-tenant Single Database</span>
                                 </div>
                             </div>
@@ -1170,9 +1598,9 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Project Card 1 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.05s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative">
-                        <i data-lucide="building-2" class="w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SAAS</div>
+                    <div class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative">
+                        <i data-lucide="building-2" class="project-icon w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SAAS</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">RDUP Platform</h3>
@@ -1190,9 +1618,9 @@
 
                 <!-- Project Card 2 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.1s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative">
-                        <i data-lucide="paw-print" class="w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">PRODUCT</div>
+                    <div class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative">
+                        <i data-lucide="paw-print" class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">PRODUCT</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">Paws HUB</h3>
@@ -1209,9 +1637,9 @@
 
                 <!-- Project Card 3 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.15s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-orange-900/40 to-red-900/40 flex items-center justify-center relative">
-                        <i data-lucide="clipboard-check" class="w-16 h-16 text-orange-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-orange-500/20 text-orange-400 text-[10px] font-mono">ENTERPRISE</div>
+                    <div class="project-visual project-orange h-48 bg-gradient-to-br from-orange-900/40 to-red-900/40 flex items-center justify-center relative">
+                        <i data-lucide="clipboard-check" class="project-icon w-16 h-16 text-orange-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-orange absolute top-4 right-4 px-2 py-1 rounded-md bg-orange-500/20 text-orange-400 text-[10px] font-mono">ENTERPRISE</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">Avenues PMS</h3>
@@ -1228,9 +1656,9 @@
 
                 <!-- Project Card 4 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.2s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center relative">
-                        <i data-lucide="package" class="w-16 h-16 text-purple-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-purple-500/20 text-purple-400 text-[10px] font-mono">AUTOMATION</div>
+                    <div class="project-visual project-purple h-48 bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center relative">
+                        <i data-lucide="package" class="project-icon w-16 h-16 text-purple-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-purple absolute top-4 right-4 px-2 py-1 rounded-md bg-purple-500/20 text-purple-400 text-[10px] font-mono">AUTOMATION</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">TreeroseHUB</h3>
@@ -1246,9 +1674,9 @@
 
                 <!-- Project Card 5 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.25s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative">
-                        <i data-lucide="dog" class="w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SOCIAL</div>
+                    <div class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative">
+                        <i data-lucide="dog" class="project-icon w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">SOCIAL</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">Wag Buddy</h3>
@@ -1264,9 +1692,9 @@
 
                 <!-- Project Card 6 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group" style="transition-delay:0.3s">
-                    <div class="project-visual h-48 bg-gradient-to-br from-yellow-900/40 to-amber-900/40 flex items-center justify-center relative">
-                        <i data-lucide="zap" class="w-16 h-16 text-yellow-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 px-2 py-1 rounded-md bg-yellow-500/20 text-yellow-400 text-[10px] font-mono">REAL-TIME</div>
+                    <div class="project-visual project-yellow h-48 bg-gradient-to-br from-yellow-900/40 to-amber-900/40 flex items-center justify-center relative">
+                        <i data-lucide="zap" class="project-icon w-16 h-16 text-yellow-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="project-badge project-badge-yellow absolute top-4 right-4 px-2 py-1 rounded-md bg-yellow-500/20 text-yellow-400 text-[10px] font-mono">REAL-TIME</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-white mb-2">Socket Quick Chat</h3>
@@ -1531,7 +1959,7 @@
             <div class="reveal-scale mb-16">
                 <div class="relative rounded-3xl overflow-hidden">
                     <!-- Animated gradient background -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/60 via-purple-900/40 to-brand-900/60"></div>
+                    <div class="contact-cta-bg absolute inset-0 bg-gradient-to-br from-brand-900/60 via-purple-900/40 to-brand-900/60"></div>
                     <div class="absolute inset-0 grid-pattern opacity-30"></div>
 
                     <!-- Floating orbs -->
@@ -1559,7 +1987,7 @@
                                 <i data-lucide="mail" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
                                 Drop me an Email
                             </a>
-                            <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white font-semibold rounded-full hover:bg-white/5 hover:border-white/25 transition-all duration-300 text-sm group">
+                            <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="theme-outline-button magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white font-semibold rounded-full hover:bg-white/5 hover:border-white/25 transition-all duration-300 text-sm group">
                                 <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
                                     <use href="#icon-linkedin"></use>
                                 </svg>
@@ -1574,9 +2002,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children" id="contactGrid">
 
                 <!-- Email -->
-                <a href="mailto:nikunjkothiya401@gmail.com" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-600 group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="mail" class="w-6 h-6 text-brand-400 group-hover:text-white transition-colors"></i>
+                <a href="mailto:nikunjkothiya401@gmail.com" class="contact-method-card card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="contact-method-icon-wrap w-14 h-14 rounded-2xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-600 group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="mail" class="contact-method-icon w-6 h-6 text-brand-400 group-hover:text-white transition-colors"></i>
                     </div>
                     <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">Email</div>
                     <div class="text-sm text-white font-medium break-all">nikunjkothiya401@gmail.com</div>
@@ -1587,9 +2015,9 @@
                 </a>
 
                 <!-- Phone -->
-                <a href="tel:+919624909958" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-green-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="phone" class="w-6 h-6 text-green-400 group-hover:text-white transition-colors"></i>
+                <a href="tel:+919624909958" class="contact-method-card card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="contact-method-icon-wrap w-14 h-14 rounded-2xl bg-green-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="phone" class="contact-method-icon w-6 h-6 text-green-400 group-hover:text-white transition-colors"></i>
                     </div>
                     <div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5">Phone</div>
                     <div class="text-sm text-white font-medium">+91 96249 09958</div>
@@ -1600,9 +2028,9 @@
                 </a>
 
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
-                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+                <a href="https://www.linkedin.com/in/nikunj-kothiya-890981b7/" target="_blank" class="contact-method-card card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="contact-method-icon-wrap w-14 h-14 rounded-2xl bg-blue-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
+                        <svg class="contact-method-icon w-6 h-6 text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
                             <use href="#icon-linkedin"></use>
                         </svg>
                     </div>
@@ -1615,9 +2043,9 @@
                 </a>
 
                 <!-- GitHub -->
-                <a href="https://github.com/nikunjkothiya" target="_blank" class="card-glow rounded-2xl p-6 group cursor-pointer block text-center">
-                    <div class="w-14 h-14 rounded-2xl bg-purple-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-600 group-hover:scale-110 transition-all duration-300">
-                        <svg class="w-6 h-6 text-purple-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+                <a href="https://github.com/nikunjkothiya" target="_blank" class="contact-method-card card-glow rounded-2xl p-6 group cursor-pointer block text-center">
+                    <div class="contact-method-icon-wrap w-14 h-14 rounded-2xl bg-purple-600/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-600 group-hover:scale-110 transition-all duration-300">
+                        <svg class="contact-method-icon w-6 h-6 text-purple-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true">
                             <use href="#icon-github"></use>
                         </svg>
                     </div>
@@ -1727,6 +2155,51 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
+        // ==================== THEME TOGGLE ====================
+        const root = document.documentElement;
+        const navbar = document.getElementById('navbar');
+        const themeToggleButtons = document.querySelectorAll('#themeToggleDesktop, #themeToggleMobile');
+        let particleRgb = '99, 102, 241';
+        let particleLineOpacity = 0.06;
+
+        function syncThemeValues() {
+            const styles = getComputedStyle(root);
+            particleRgb = styles.getPropertyValue('--particle-rgb').trim() || '99, 102, 241';
+            particleLineOpacity = parseFloat(styles.getPropertyValue('--particle-line-opacity')) || 0.06;
+        }
+
+        function applyTheme(theme) {
+            const isLight = theme === 'light';
+            root.classList.toggle('theme-light', isLight);
+            root.classList.toggle('theme-dark', !isLight);
+            root.style.colorScheme = theme;
+            try {
+                localStorage.setItem('portfolio-theme', theme);
+            } catch (error) {
+                // Ignore storage failures and keep the in-memory theme change.
+            }
+            syncThemeValues();
+
+            themeToggleButtons.forEach(button => {
+                button.setAttribute('aria-pressed', String(isLight));
+                button.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+            });
+
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = getComputedStyle(root).getPropertyValue('--nav-shadow').trim();
+            }
+        }
+
+        syncThemeValues();
+        applyTheme(root.classList.contains('theme-light') ? 'light' : 'dark');
+
+        themeToggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const nextTheme = root.classList.contains('theme-light') ? 'dark' : 'light';
+                applyTheme(nextTheme);
+            });
+        });
+
         // ==================== LOADING SCREEN ====================
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1783,7 +2256,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+                ctx.fillStyle = `rgba(${particleRgb}, ${this.opacity})`;
                 ctx.fill();
             }
         }
@@ -1812,7 +2285,7 @@
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.06 * (1 - dist / 120)})`;
+                        ctx.strokeStyle = `rgba(${particleRgb}, ${particleLineOpacity * (1 - dist / 120)})`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
@@ -1927,14 +2400,13 @@
         }
 
         // ==================== NAVBAR SCROLL ====================
-        const navbar = document.getElementById('navbar');
         let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.scrollY;
 
             if (currentScroll > 100) {
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+                navbar.style.boxShadow = getComputedStyle(root).getPropertyValue('--nav-shadow').trim();
             } else {
                 navbar.style.boxShadow = 'none';
             }
@@ -2005,16 +2477,18 @@
         const contactForm = document.getElementById('contactForm');
         const toast = document.getElementById('toast');
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
 
-            // Show toast
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+                // Show toast
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
 
-            // Reset form
-            contactForm.reset();
-        });
+                // Reset form
+                contactForm.reset();
+            });
+        }
 
         // ==================== MAGNETIC BUTTONS ====================
         document.querySelectorAll('.magnetic-btn').forEach(btn => {
