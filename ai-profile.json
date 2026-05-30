@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeveloperProfile",
+  "type": "object",
+  "name": "Nikunj Kothiya",
+  "jobTitle": "Senior Software Engineer & Laravel Specialist",
+  "currentRole": "Project Lead",
+  "location": {
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "country": "India",
+    "coordinates": {
+      "latitude": 23.0225,
+      "longitude": 72.5714
+    }
+  },
+  "contact": {
+    "email": "nikunjkothiya401@gmail.com",
+    "phone": "+919624909958",
+    "portfolio": "https://nikunjkothiya.github.io/"
+  },
+  "profiles": {
+    "linkedin": "https://www.linkedin.com/in/nikunj-kothiya-890981b7/",
+    "github": "https://github.com/nikunjkothiya"
+  },
+  "hiringDetails": {
+    "availability": "Immediate",
+    "workModes": ["Remote", "Hybrid", "On-site"],
+    "targetPositions": ["Senior Software Engineer", "Tech Lead", "Project Lead", "Laravel Architect"]
+  },
+  "coreExpertise": {
+    "languages": ["PHP", "JavaScript", "SQL", "HTML5", "CSS3"],
+    "frameworks": ["Laravel", "Lumen", "Node.js (Express)", "Vue.js", "Tailwind CSS"],
+    "infrastructure": ["AWS (EC2, S3, RDS, Aurora, ElastiCache)", "Docker", "CI/CD", "Linux DevOps"],
+    "realtime": ["Laravel Reverb", "Laravel Echo", "Socket.IO"],
+    "databases": ["MySQL", "Redis", "Elasticsearch"]
+  },
+  "experience": [
+    {
+      "role": "Project Lead",
+      "company": "Victrom Integrated Computing Solutions",
+      "period": "Oct 2024 - Present",
+      "location": "Kuwait (Remote)",
+      "highlights": [
+        "Architected RDUP multi-tenant real estate SaaS platform for Mabanee Group using Laravel 12 and Laravel Reverb.",
+        "Built isolated dynamic database structures for large-scale mall and construction projects."
+      ]
+    },
+    {
+      "role": "Senior Software Developer",
+      "company": "Dreamer Technoland",
+      "period": "Apr 2023 - Aug 2024",
+      "location": "Noida, India (Remote)",
+      "highlights": [
+        "Designed Paws HUB multi-tenant pet clinic management system with dynamic role-permissions and billing.",
+        "Engineered University Hall Management System, enabling owners to monetize space resources (coaching rooms, projectors, play grounds) with ad-hoc reservations, scheduling calendars, and infrastructure catalogues using Laravel 12, MySQL, and AWS.",
+        "Architected multi-tenant Hall Management System for restaurant/hotel owners with isolated tenant databases, subdomain URLs, dynamic day-wise package configurations (DJ, decorations, assets), and comprehensive financial reports using Laravel 12, MySQL, Cron Schedulers, and AWS.",
+        "Debugged critical 3rd party API synchronizations and scalability crashes on Oak Haven platform.",
+        "Created contractor online-offline synchronization modules using Expo Push APIs for Unlimited Power."
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "company": "Multipz Technology Limited",
+      "period": "Apr 2020 - Apr 2023",
+      "location": "Ahmedabad, India",
+      "highlights": [
+        "Created Avenues permit & mall management system with multi-tenant database models.",
+        "Engineered TreeroseHUB automated supply chain orders dashboard with real-time Socket.IO alerts.",
+        "Developed Node.js streaming chat microservices and Wag Buddy pet social media reels processing pipelines."
+      ]
+    },
+    {
+      "role": "Back-end Laravel Intern",
+      "company": "Maslow Initiative",
+      "period": "Jan 2021 - Apr 2021",
+      "location": "Delhi, India (Remote)",
+      "highlights": [
+        "Constructed timelined classroom booking APIs and automated YouTube content catalog indexing."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.E. in Mechanical Engineering",
+      "institution": "Government Engineering College, Modasa",
+      "boardOrUniversity": "Gujarat Technological University",
+      "score": "CGPA: 8.09/10",
+      "year": 2018
+    },
+    {
+      "degree": "HSC (XII)",
+      "institution": "Vidhyanagar High School, Ahmedabad",
+      "boardOrUniversity": "GSEB",
+      "score": "83.00%",
+      "year": 2014
+    },
+    {
+      "degree": "SSC (X)",
+      "institution": "Vidhyanagar High School, Ahmedabad",
+      "boardOrUniversity": "GSEB",
+      "score": "91.04%",
+      "year": 2012
+    }
+  ]
+}

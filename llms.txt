@@ -1,0 +1,81 @@
+# Nikunj Kothiya - Senior Software Engineer & Laravel Expert
+
+Nikunj Kothiya is a highly experienced, growth-driven, and result-oriented Senior Software Engineer with over 6 years of professional experience in designing, architecting, and implementing highly scalable web applications, multi-tenant SaaS structures, real-time communication networks, and cloud-native solutions. He is a prominent open-source contributor with deep specialization in the Laravel and PHP ecosystems.
+
+---
+
+## Executive Summary
+- **Current Role**: Project Lead
+- **Experience**: 6+ Years (Active Backend Specialist and System Architect)
+- **Primary Expertise**: Laravel ecosystem, multi-tenant architectures, real-time WebSockets, cloud infrastructure (AWS), relational databases (MySQL/RDS), and high-performance queue systems.
+- **Availability**: Available for premium Freelance contracts and Full-Time engineering roles.
+- **Location**: Ahmedabad, Gujarat, India (Open to full Remote and On-Site positions).
+- **Core Philosophy**: Building scalable, maintainable, and high-performance software systems that solve real business problems and deliver measurable user value.
+
+---
+
+## Technical Stack & Expertise
+
+### Programming Languages & Frameworks
+- **Languages**: PHP (expert), JavaScript (advanced), SQL, HTML5, CSS3.
+- **Backend Frameworks**: Laravel (Expert - v7 to v12), Lumen, Node.js (Express).
+- **Frontend Technologies**: Vue.js, Vanilla JS, Tailwind CSS, Responsive Web Design.
+- **Real-Time WebSockets**: Laravel Reverb, Laravel Echo, Socket.IO.
+
+### Cloud Infrastructure & Architecture
+- **AWS Suite**: EC2, S3, RDS, Amazon Aurora, ElastiCache, IAM, Route 53.
+- **Containerization & Devops**: Docker, CI/CD pipelines, Git, Linux Administration, DevOps tools.
+- **Databases & Cache**: MySQL (Complex query optimization, database design), PostgreSQL, Redis, Elasticsearch.
+- **Automation & Scale**: Queue Systems (RabbitMQ, Redis Queue), Cron Jobs, API development, PDF processing, Video Compression (FFmpeg).
+
+---
+
+## Career Milestones & Experience
+
+### 1. Project Lead
+**Victrom Integrated Computing Solutions** | *Oct 2024 - Present*
+- **Role Type**: Freelance / Remote Project Lead
+- **Major Product: RDUP Platform**:
+  - Developed a comprehensive Multi-Tenant Real Estate Management SaaS platform customized for Mabanee Group (a prominent real estate developer in the Arab region).
+  - Architected a multi-tenant dynamic database isolation structure with secure subdomains for individual mall and construction projects.
+  - Implemented real-time coordination feeds using **Laravel 12** and **Laravel Reverb (WebSockets)**, AWS RDS (MySQL), Redis caching, AWS S3 storage, high-throughput PDF generation editors, and automated background queues.
+
+### 2. Senior Software Developer
+**Dreamer Technoland** | *Apr 2023 - Aug 2024*
+- **Role Type**: Remote Senior Developer
+- **Key Projects**:
+  - **Paws HUB**: Architected a complete pet care clinic management SaaS with dynamic multi-tenancy, custom role-permission matrixes, subscription billing, and real-time alerts. (Tech: Laravel 10, MySQL, Redis, Echo Server).
+  - **University Hall Management System**: Engineered an infrastructure optimization platform allowing university owners to offer spaces (seminars, webinars, semester coaching) for paid bookings with ad-hoc scheduling, teacher modules, and calendar sync. (Tech: Laravel 12, MySQL, AWS).
+  - **Hall Management System**: Designed and implemented a multi-tenant booking platform for restaurant and hotel owners to lease out facilities for functions and meetings, utilizing database-per-tenant isolation, subdomain URLs, customizable event packages (DJ, decorations, equipment), and custom financial cron engines. (Tech: Laravel 12, MySQL, Cron Schedulers, AWS).
+  - **Oak Haven**: Spearheaded massage booking platform integrations, troubleshooting critical synchronizations with the Mindbody API, optimizing SQL structures, and eliminating peak-load system bottlenecks.
+  - **Unlimited Power**: Designed an offline-capable contractor management ecosystem allowing field managers and engineers to log POs, orders, leaves, and RFQs, utilizing dynamic sync protocols for Expo native push APIs. (Tech: Laravel, Expo, AWS).
+
+### 3. Software Developer
+**Multipz Technology Limited** | *Apr 2020 - Apr 2023*
+- **Role Type**: On-Site Developer (Promoted from Junior to Lead Software Developer)
+- **Key Projects**:
+  - **Avenues PMS**: Designed a multi-tenant mall permit and contractor entry-exit validation gateway with FCM mobile verification.
+  - **TreeroseHUB**: Built an automated supply chain order processing engine utilizing high-frequency updates via Socket.IO, barcode printing, and smart routing algorithms.
+  - **Real-Time quick chat**: Programmed a custom high-performance live-streaming chat hub using Node.js, Express, and Socket.IO, replacing legacy HTTP polling.
+  - **Wag Buddy**: Engineered a social network for pet owners featuring video ingestion, FFmpeg processing, mapping APIs, and real-time private messaging.
+
+### 4. Back-end Laravel Intern
+**Maslow Initiative** | *Jan 2021 - Apr 2021*
+- **Key Projects**:
+  - **Beyond Exams**: Constructed classroom scheduling integrations, user analytics dashboards, and custom YouTube API video cataloging modules.
+
+---
+
+## Education
+- **B.E. in Mechanical Engineering**: Government Engineering College, Modasa (Gujarat Technological University) | *CGPA: 8.09/10* (2018)
+- **HSC (XII)**: Vidhyanagar High School, Ahmedabad | *83.00%* (2014)
+- **SSC (X)**: Vidhyanagar High School, Ahmedabad | *91.04%* (2012)
+
+---
+
+## Contact & Links
+- **Email**: [nikunjkothiya401@gmail.com](mailto:nikunjkothiya401@gmail.com)
+- **Phone**: [+919624909958](tel:+919624909958)
+- **LinkedIn**: [https://www.linkedin.com/in/nikunj-kothiya-890981b7/](https://www.linkedin.com/in/nikunj-kothiya-890981b7/)
+- **GitHub**: [https://github.com/nikunjkothiya](https://github.com/nikunjkothiya)
+- **Portfolio Website**: [https://nikunjkothiya.github.io/](https://nikunjkothiya.github.io/)
