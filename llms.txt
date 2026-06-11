@@ -7,7 +7,7 @@ Nikunj Kothiya is a highly experienced, growth-driven, and result-oriented Senio
 ## Executive Summary
 - **Current Role**: Project Lead
 - **Experience**: 6+ Years (Active Backend Specialist and System Architect)
-- **Primary Expertise**: Laravel ecosystem, multi-tenant architectures, real-time WebSockets, cloud infrastructure (AWS), relational databases (MySQL/RDS), and high-performance queue systems.
+- **Primary Expertise**: Laravel ecosystem, multi-tenant architectures, real-time WebSockets, cloud infrastructure (GCP/AWS), relational databases (MySQL/RDS), and high-performance queue systems.
 - **Availability**: Available for premium Freelance contracts and Full-Time engineering roles.
 - **Location**: Ahmedabad, Gujarat, India (Open to full Remote and On-Site positions).
 - **Core Philosophy**: Building scalable, maintainable, and high-performance software systems that solve real business problems and deliver measurable user value.
@@ -23,7 +23,7 @@ Nikunj Kothiya is a highly experienced, growth-driven, and result-oriented Senio
 - **Real-Time WebSockets**: Laravel Reverb, Laravel Echo, Socket.IO.
 
 ### Cloud Infrastructure & Architecture
-- **AWS Suite**: EC2, S3, RDS, Amazon Aurora, ElastiCache, IAM, Route 53.
+- **Cloud Platforms**: GCP, AWS Suite (EC2, S3, RDS, Amazon Aurora, ElastiCache, IAM, Route 53).
 - **Containerization & Devops**: Docker, CI/CD pipelines, Git, Linux Administration, DevOps tools.
 - **Databases & Cache**: MySQL (Complex query optimization, database design), PostgreSQL, Redis, Elasticsearch.
 - **Automation & Scale**: Queue Systems (RabbitMQ, Redis Queue), Cron Jobs, API development, PDF processing, Video Compression (FFmpeg).

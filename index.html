@@ -72,7 +72,8 @@
           "PHP", "Laravel", "Lumen", "Node.js", "Express", "Vue.js", "MySQL", 
           "AWS", "Amazon EC2", "Amazon S3", "Amazon RDS", "Redis", "Elasticsearch", 
           "WebSockets", "Laravel Reverb", "Socket.IO", "Docker", "DevOps", "CI/CD", 
-          "Multi-Tenant Architecture", "System Architecture", "API Design", "Agile Project Management"
+          "Multi-Tenant Architecture", "System Architecture", "API Design", "Agile Project Management",
+          "WebRTC", "STUN/TURN", "FastAPI", "Python", "Flutter", "NDVI Satellite", "GCP"
         ],
         "worksFor": {
           "@type": "Organization",
@@ -2286,6 +2287,8 @@
                     class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Experience</a>
                 <a href="#projects"
                     class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Projects</a>
+                <a href="#products"
+                    class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Products</a>
                 <a href="#skills" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Skills</a>
                 <a href="#education"
                     class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Education</a>
@@ -2333,6 +2336,8 @@
             class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Experience</a>
         <a href="#projects"
             class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="#products"
+            class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Products</a>
         <a href="#skills"
             class="mobile-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Skills</a>
         <a href="#education"
@@ -2534,7 +2539,7 @@
                         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
                             <i data-lucide="briefcase" class="w-4 h-4 text-brand-400 mb-2"></i>
                             <div class="text-xs text-gray-500">Current Role</div>
-                            <div class="text-sm text-white font-medium">Project Lead</div>
+                            <div class="text-sm text-white font-medium">Consultant</div>
                         </div>
                         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
                             <i data-lucide="globe" class="w-4 h-4 text-brand-400 mb-2"></i>
@@ -2639,7 +2644,7 @@
                                 <span
                                     class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium w-fit">
                                     <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                    Oct 2024 — Present
+                                    Oct 2024 — May 2026
                                 </span>
                             </div>
                             <p class="text-gray-500 text-xs mb-1">📍 Kuwait — Remote | Freelance</p>
@@ -3085,12 +3090,109 @@
 
     <div class="glow-separator max-w-7xl mx-auto"></div>
 
+    <!-- My Products Showcase -->
+    <section id="products" class="relative z-10 py-14 sm:py-24 md:py-32">
+        <div class="agentic-annotation">&lt;Section: Products Showcase /&gt; Schema Mapping: Person.knowsAbout</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-20 reveal">
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">04 — My Products</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Personal Products</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Innovative applications and platforms engineered from inception to deployment</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Product Card 1 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.05s">
+                    <div
+                        class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
+                        <i data-lucide="video"
+                            class="project-icon w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div
+                            class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">
+                            DEV PHASE</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-white">Stranger Video Call</h3>
+                                <a href="https://myownproduct.site/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
+                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built to run inside containerized environments for scalable, low-latency communication.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="tech-tag">WebRTC</span>
+                                <span class="tech-tag">STUN/TURN</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">GCP</span>
+                            </div>
+                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                                Status: Local testing & developing product phase
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.1s">
+                    <div
+                        class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
+                        <i data-lucide="sprout"
+                            class="project-icon w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div
+                            class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
+                            DEV PHASE</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-white">FarmAI Solution</h3>
+                                <a href="https://farmaiapp.duckdns.org/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors flex items-center gap-1 text-xs font-medium">
+                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                Complete agricultural management optimization platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multi-language audio integrations, and smart weather indicators with audio warnings for farmers.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">NDVI Satellite</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">GCP</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">TTS/STT</span>
+                            </div>
+                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                                Status: Local testing & developing product phase
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-separator max-w-7xl mx-auto"></div>
+
     <!-- Skills Section -->
     <section id="skills" class="relative z-10 py-14 sm:py-24 md:py-32">
         <div class="agentic-annotation">&lt;Section: Technical Arsenal /&gt; Schema Mapping: Person.knowsAbout</div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10 sm:mb-20 reveal">
-                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">04 — Technical
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">05 — Technical
                     Arsenal</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Skills &amp; Technologies</h2>
             </div>
@@ -3159,7 +3261,7 @@
                     </div>
                     <div class="space-y-5">
                         <div>
-                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">AWS (EC2, S3,
+                            <div class="flex justify-between mb-2"><span class="text-sm text-gray-300">GCP / AWS (EC2, S3,
                                     RDS)</span><span class="text-xs text-purple-400 font-mono">95%</span></div>
                             <div class="h-2 rounded-full bg-white/5 overflow-hidden">
                                 <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-purple-600 to-purple-400"
@@ -3278,7 +3380,7 @@
     <section id="education" class="relative z-10 py-14 sm:py-24 md:py-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10 sm:mb-20 reveal">
-                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">05 —
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">06 —
                     Education</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Academic Background</h2>
             </div>
@@ -3377,7 +3479,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10 sm:mb-16 reveal">
-                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">06 — Get In
+                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">07 — Get In
                     Touch</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Let's Work Together</h2>
                 <p class="text-gray-500 mt-4 max-w-xl mx-auto">Have a project in mind or looking for a skilled software
@@ -4199,6 +4301,8 @@
             let isRealtime = false;
             let isSaas = false;
             let isBooking = false;
+            let isVideoCall = false;
+            let isFarmAi = false;
 
             if (query.includes('laravel') || query.includes('php') || query.includes('backend') || query.includes('back-end')) {
                 score += 3;
@@ -4245,13 +4349,31 @@
                 });
             }
 
+            if (query.includes('webrtc') || query.includes('turn') || query.includes('stun') || query.includes('video') || query.includes('stranger') || query.includes('call')) {
+                score += 2;
+                isVideoCall = true;
+                matches.push({
+                    title: "WebRTC & Video Streaming",
+                    desc: "Designed and engineered a custom one-to-one stranger video call product featuring custom STUN/TURN WebRTC server setups and Vue.js frontends."
+                });
+            }
+
+            if (query.includes('farmai') || query.includes('python') || query.includes('fastapi') || query.includes('flutter') || query.includes('ndvi') || query.includes('satellite') || query.includes('ai') || query.includes('speech') || query.includes('stt') || query.includes('tts')) {
+                score += 2;
+                isFarmAi = true;
+                matches.push({
+                    title: "Agricultural AI & Python Pipelines",
+                    desc: "Developing FarmAI Solution featuring FastAPI backends, Scan AI, Help AI, NDVI satellite crop data analytics, and STT/TTS multilingual voice notification integrations."
+                });
+            }
+
             // Cap at 99%
             if (score > 99) score = 99;
 
             // Generate Assessment Statement
             let assessment = "";
             if (score >= 95) {
-                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
+                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
             } else {
                 assessment = `Strong structural match! Nikunj has robust engineering capabilities that match your requirements. His 6+ years of versatile full-stack experience and open-source spirit ensure rapid adaptation and execution of your target tech stack.`;
             }
@@ -4276,6 +4398,12 @@
             }
             if (isRealtime) {
                 proposalText += `• WebSockets Veteran: Designed instant chat streaming servers and live supply chain dashboards utilizing Socket.IO and Laravel Reverb WebSockets to process heavy client updates smoothly.\n`;
+            }
+            if (isVideoCall) {
+                proposalText += `• WebRTC & Video Streaming Engineer: Designed and engineered a custom stranger video calling product with peer-to-peer WebRTC, STUN/TURN server setups, and Vue.js frontends.\n`;
+            }
+            if (isFarmAi) {
+                proposalText += `• AgTech & AI Developer: Developed FarmAI agricultural platform with FastAPI backends, Scan AI, Help AI, NDVI satellite crop metrics, and TTS/STT multi-language audio alerts.\n`;
             }
             proposalText += `• Project Lead Leadership: Successfully guided developer teams, managed active stakeholder collaborations, and delivered scalable applications within schedule and budget.\n\n`;
             proposalText += `Nikunj operates remote out of Ahmedabad, India and holds immediate availability for premium contracts or permanent roles. Let's schedule an engineering call to discuss your objectives in detail.\n\n`;

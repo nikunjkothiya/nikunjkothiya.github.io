@@ -31,7 +31,7 @@
   "coreExpertise": {
     "languages": ["PHP", "JavaScript", "SQL", "HTML5", "CSS3"],
     "frameworks": ["Laravel", "Lumen", "Node.js (Express)", "Vue.js", "Tailwind CSS"],
-    "infrastructure": ["AWS (EC2, S3, RDS, Aurora, ElastiCache)", "Docker", "CI/CD", "Linux DevOps"],
+    "infrastructure": ["GCP", "AWS (EC2, S3, RDS, Aurora, ElastiCache)", "Docker", "CI/CD", "Linux DevOps"],
     "realtime": ["Laravel Reverb", "Laravel Echo", "Socket.IO"],
     "databases": ["MySQL", "Redis", "Elasticsearch"]
   },
@@ -101,6 +101,22 @@
       "boardOrUniversity": "GSEB",
       "score": "91.04%",
       "year": 2012
+    }
+  ],
+  "products": [
+    {
+      "name": "Stranger Video Call",
+      "description": "One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations.",
+      "technologies": ["WebRTC", "STUN/TURN", "Vue.js", "PostgreSQL", "Docker", "GCP"],
+      "url": "https://myownproduct.site/",
+      "status": "Local testing and developing product phase"
+    },
+    {
+      "name": "FarmAI Solution",
+      "description": "Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators.",
+      "technologies": ["Python", "FastAPI", "Flutter", "NDVI Satellite", "PostgreSQL", "Redis", "GCP", "Docker", "TTS/STT"],
+      "url": "https://farmaiapp.duckdns.org/",
+      "status": "Local testing and developing product phase"
     }
   ]
 }
