@@ -73,7 +73,8 @@
           "AWS", "Amazon EC2", "Amazon S3", "Amazon RDS", "Redis", "Elasticsearch", 
           "WebSockets", "Laravel Reverb", "Socket.IO", "Docker", "DevOps", "CI/CD", 
           "Multi-Tenant Architecture", "System Architecture", "API Design", "Agile Project Management",
-          "WebRTC", "STUN/TURN", "FastAPI", "Python", "Flutter", "NDVI Satellite", "GCP"
+          "WebRTC", "STUN/TURN", "FastAPI", "Python", "Flutter", "NDVI Satellite", "GCP",
+          "AI SEO", "AI GEO", "Brand Visibility", "Next.js", "Celery"
         ],
         "worksFor": {
           "@type": "Organization",
@@ -3100,9 +3101,52 @@
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Innovative applications and platforms engineered from inception to deployment</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto">
                 <!-- Product Card 1 -->
                 <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.05s">
+                    <div
+                        class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative flex-shrink-0">
+                        <i data-lucide="radar"
+                            class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div
+                            class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
+                            LIVE</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-white">BrandRadar</h3>
+                                <a href="http://brandradar.live/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
+                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and actionable growth opportunities.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Celery</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">GCP</span>
+                                <span class="tech-tag">Caddy</span>
+                                <span class="tech-tag">AI GEO</span>
+                            </div>
+                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                Status: Live deployment & active monitoring
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.1s">
                     <div
                         class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
                         <i data-lucide="video"
@@ -3140,8 +3184,8 @@
                     </div>
                 </div>
 
-                <!-- Product Card 2 -->
-                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.1s">
+                <!-- Product Card 3 -->
+                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.15s">
                     <div
                         class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
                         <i data-lucide="sprout"
@@ -3154,9 +3198,6 @@
                         <div class="mb-6">
                             <div class="flex items-center justify-between mb-3">
                                 <h3 class="text-lg font-bold text-white">FarmAI Solution</h3>
-                                <a href="https://farmaiapp.duckdns.org/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors flex items-center gap-1 text-xs font-medium">
-                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                </a>
                             </div>
                             <p class="text-gray-500 text-sm leading-relaxed">
                                 Complete agricultural management optimization platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multi-language audio integrations, and smart weather indicators with audio warnings for farmers.
@@ -3175,8 +3216,8 @@
                                 <span class="tech-tag">TTS/STT</span>
                             </div>
                             <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                                Status: Local testing & developing product phase
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                Status: Server offline / local development phase
                             </div>
                         </div>
                     </div>
@@ -4303,6 +4344,7 @@
             let isBooking = false;
             let isVideoCall = false;
             let isFarmAi = false;
+            let isBrandRadar = false;
 
             if (query.includes('laravel') || query.includes('php') || query.includes('backend') || query.includes('back-end')) {
                 score += 3;
@@ -4367,13 +4409,22 @@
                 });
             }
 
+            if (query.includes('brandradar') || query.includes('audit') || query.includes('visibility') || query.includes('competitor') || query.includes('auditor') || query.includes('seo') || query.includes('presence')) {
+                score += 3;
+                isBrandRadar = true;
+                matches.push({
+                    title: "Brand Presence & AI SEO Audits",
+                    desc: "Architected BrandRadar, a Next.js/FastAPI visibility auditor running on GCP to analyze brand presence across search engines and AI assistants."
+                });
+            }
+
             // Cap at 99%
             if (score > 99) score = 99;
 
             // Generate Assessment Statement
             let assessment = "";
             if (score >= 95) {
-                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
+                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isBrandRadar ? 'Brand Audits/Next.js ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
             } else {
                 assessment = `Strong structural match! Nikunj has robust engineering capabilities that match your requirements. His 6+ years of versatile full-stack experience and open-source spirit ensure rapid adaptation and execution of your target tech stack.`;
             }
@@ -4398,6 +4449,9 @@
             }
             if (isRealtime) {
                 proposalText += `• WebSockets Veteran: Designed instant chat streaming servers and live supply chain dashboards utilizing Socket.IO and Laravel Reverb WebSockets to process heavy client updates smoothly.\n`;
+            }
+            if (isBrandRadar) {
+                proposalText += `• AI SEO & Visibility Architect: Created BrandRadar, a Next.js and FastAPI platform analyzing brand visibility across search engines and AI assistants, with Docker containers deployed on GCP.\n`;
             }
             if (isVideoCall) {
                 proposalText += `• WebRTC & Video Streaming Engineer: Designed and engineered a custom stranger video calling product with peer-to-peer WebRTC, STUN/TURN server setups, and Vue.js frontends.\n`;

@@ -30,6 +30,13 @@ Nikunj Kothiya is a highly experienced, growth-driven, and result-oriented Senio
 
 ---
 
+## Personal Products & SaaS
+- **BrandRadar**: A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and prioritized growth actions. Built with Next.js, FastAPI, Celery, Redis, PostgreSQL, and Docker. (Live: http://brandradar.live/)
+- **Stranger Video Call**: One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built with WebRTC, STUN/TURN, Vue.js, PostgreSQL, Docker, and GCP. (Live: https://myownproduct.site/)
+- **FarmAI Solution**: Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators. Built with Python, FastAPI, Flutter, NDVI Satellite, PostgreSQL, Redis, GCP, and Docker. (Offline / Development Phase)
+
+---
+
 ## Career Milestones & Experience
 
 ### 1. Project Lead

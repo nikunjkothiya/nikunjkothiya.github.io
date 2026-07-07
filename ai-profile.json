@@ -105,6 +105,13 @@
   ],
   "products": [
     {
+      "name": "BrandRadar",
+      "description": "A brand visibility auditor showing brand presence across search engines and AI assistants, competitor visibility, authority sources, and prioritized growth actions.",
+      "technologies": ["Next.js", "FastAPI", "Python", "Celery", "PostgreSQL", "Redis", "Docker", "GCP", "Caddy", "AI GEO Visibility"],
+      "url": "http://brandradar.live/",
+      "status": "Live deployment & active monitoring"
+    },
+    {
       "name": "Stranger Video Call",
       "description": "One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations.",
       "technologies": ["WebRTC", "STUN/TURN", "Vue.js", "PostgreSQL", "Docker", "GCP"],
@@ -115,8 +122,7 @@
       "name": "FarmAI Solution",
       "description": "Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators.",
       "technologies": ["Python", "FastAPI", "Flutter", "NDVI Satellite", "PostgreSQL", "Redis", "GCP", "Docker", "TTS/STT"],
-      "url": "https://farmaiapp.duckdns.org/",
-      "status": "Local testing and developing product phase"
+      "status": "Server offline / local development phase"
     }
   ]
 }
