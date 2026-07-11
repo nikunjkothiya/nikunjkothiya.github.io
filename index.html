@@ -2237,6 +2237,57 @@
         html.theme-agentic .compat-btn-proposal-secondary:hover {
             background-color: rgba(57, 255, 20, 0.1) !important;
         }
+
+        /* ===== GSAP SCROLL PROGRESS BAR ===== */
+        .scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+            transform-origin: left center;
+            transform: scaleX(0);
+            z-index: 9999;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        html.theme-light .scroll-progress-bar {
+            background: linear-gradient(90deg, #4f46e5, #6366f1, #818cf8);
+        }
+
+        html.theme-agentic .scroll-progress-bar {
+            background: linear-gradient(90deg, #39ff14, #00ff66, #39ff14);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+        }
+
+        /* ===== 3D CARD TILT ===== */
+        .card-glow {
+            transform-style: preserve-3d;
+        }
+
+        #products h2, #products span, .products-track {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* ===== LENIS SMOOTH SCROLL ===== */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -2324,6 +2375,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="scroll-progress-bar"></div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed inset-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
@@ -3092,132 +3146,134 @@
     <div class="glow-separator max-w-7xl mx-auto"></div>
 
     <!-- My Products Showcase -->
-    <section id="products" class="relative z-10 py-14 sm:py-24 md:py-32">
+    <section id="products" class="relative z-10 py-14 sm:py-24 md:py-0 md:h-screen md:flex md:flex-col md:justify-center overflow-hidden">
         <div class="agentic-annotation">&lt;Section: Products Showcase /&gt; Schema Mapping: Person.knowsAbout</div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-10 sm:mb-20 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col justify-center">
+            <div class="mb-10 sm:mb-16 md:mb-12 reveal">
                 <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">04 — My Products</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Personal Products</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Innovative applications and platforms engineered from inception to deployment</p>
+                <p class="text-gray-500 mt-4 max-w-2xl">Innovative applications and platforms engineered from inception to deployment</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto">
-                <!-- Product Card 1 -->
-                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.05s">
-                    <div
-                        class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative flex-shrink-0">
-                        <i data-lucide="radar"
-                            class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+            <div class="products-track-container relative overflow-visible">
+                <div class="products-track flex flex-col md:flex-row gap-6 md:gap-8 w-full md:w-max">
+                    <!-- Product Card 1 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.05s">
                         <div
-                            class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
-                            LIVE</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between">
-                        <div class="mb-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <h3 class="text-lg font-bold text-white">BrandRadar</h3>
-                                <a href="http://brandradar.live/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
-                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                </a>
-                            </div>
-                            <p class="text-gray-500 text-sm leading-relaxed">
-                                A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and actionable growth opportunities.
-                            </p>
+                            class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="radar"
+                                class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div
+                                class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
+                                LIVE</div>
                         </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span class="tech-tag">Next.js</span>
-                                <span class="tech-tag">FastAPI</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Celery</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">GCP</span>
-                                <span class="tech-tag">Caddy</span>
-                                <span class="tech-tag">AI GEO</span>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-lg font-bold text-white">BrandRadar</h3>
+                                    <a href="http://brandradar.live/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
+                                        Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and actionable growth opportunities.
+                                </p>
                             </div>
-                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                Status: Live deployment & active monitoring
+                            <div>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Celery</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">GCP</span>
+                                    <span class="tech-tag">Caddy</span>
+                                    <span class="tech-tag">AI GEO</span>
+                                </div>
+                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    Status: Live deployment & active monitoring
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Product Card 2 -->
-                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.1s">
-                    <div
-                        class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
-                        <i data-lucide="video"
-                            class="project-icon w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <!-- Product Card 2 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.1s">
                         <div
-                            class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">
-                            DEV PHASE</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between">
-                        <div class="mb-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <h3 class="text-lg font-bold text-white">Stranger Video Call</h3>
-                                <a href="https://myownproduct.site/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
-                                    Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                </a>
-                            </div>
-                            <p class="text-gray-500 text-sm leading-relaxed">
-                                One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built to run inside containerized environments for scalable, low-latency communication.
-                            </p>
+                            class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="video"
+                                class="project-icon w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div
+                                class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">
+                                DEV PHASE</div>
                         </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span class="tech-tag">WebRTC</span>
-                                <span class="tech-tag">STUN/TURN</span>
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">GCP</span>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-lg font-bold text-white">Stranger Video Call</h3>
+                                    <a href="https://myownproduct.site/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
+                                        Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built to run inside containerized environments for scalable, low-latency communication.
+                                </p>
                             </div>
-                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                                Status: Local testing & developing product phase
+                            <div>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="tech-tag">WebRTC</span>
+                                    <span class="tech-tag">STUN/TURN</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">GCP</span>
+                                </div>
+                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                    <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                                    Status: Local testing & developing product phase
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Product Card 3 -->
-                <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full" style="transition-delay:0.15s">
-                    <div
-                        class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
-                        <i data-lucide="sprout"
-                            class="project-icon w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <!-- Product Card 3 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.15s">
                         <div
-                            class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
-                            DEV PHASE</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between">
-                        <div class="mb-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <h3 class="text-lg font-bold text-white">FarmAI Solution</h3>
-                            </div>
-                            <p class="text-gray-500 text-sm leading-relaxed">
-                                Complete agricultural management optimization platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multi-language audio integrations, and smart weather indicators with audio warnings for farmers.
-                            </p>
+                            class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="sprout"
+                                class="project-icon w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div
+                                class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
+                                DEV PHASE</div>
                         </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">FastAPI</span>
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">NDVI Satellite</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">GCP</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">TTS/STT</span>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-lg font-bold text-white">FarmAI Solution</h3>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    Complete agricultural management optimization platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multi-language audio integrations, and smart weather indicators with audio warnings for farmers.
+                                </p>
                             </div>
-                            <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                                Status: Server offline / local development phase
+                            <div>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Flutter</span>
+                                    <span class="tech-tag">NDVI Satellite</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">GCP</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">TTS/STT</span>
+                                </div>
+                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                    Status: Server offline / local development phase
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3856,9 +3912,45 @@
         <i data-lucide="arrow-up" class="w-4 h-4"></i>
     </button>
 
+    <!-- Lenis Smooth Scroll & GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // ==================== GSAP & LENIS SETUP ====================
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobile = window.innerWidth < 768;
+
+        let lenis;
+        if (!isMobile && !prefersReducedMotion) {
+            lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential spring curve
+                smoothWheel: true,
+                touchMultiplier: 1.5,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // Connect Lenis to ScrollTrigger
+            lenis.on('scroll', ScrollTrigger.update);
+            
+            // Connect Lenis to GSAP ticker
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+        }
 
         // ==================== THEME TOGGLE ====================
         const root = document.documentElement;
@@ -3914,6 +4006,47 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
+
+                // ==================== HERO CINEMATIC ENTRANCE ====================
+                if (!prefersReducedMotion) {
+                    // Disable CSS transitions so GSAP has full control
+                    document.querySelectorAll('#hero .reveal, #hero .reveal-scale').forEach(el => {
+                        el.style.transition = 'none';
+                    });
+                    gsap.set('.orbit-item', { opacity: 0 });
+
+                    const heroTl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
+                    heroTl
+                        .to('#hero .reveal', {
+                            opacity: 1,
+                            y: 0,
+                            stagger: 0.12,
+                            duration: 1
+                        })
+                        .to('#hero .reveal-scale', {
+                            opacity: 1,
+                            scale: 1,
+                            duration: 1.4,
+                            ease: 'elastic.out(1, 0.75)'
+                        }, '-=0.6')
+                        .to('.orbit-item', {
+                            opacity: 1,
+                            stagger: 0.15,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        }, '-=0.8')
+                        .eventCallback('onComplete', () => {
+                            // Restore CSS transitions for hover effects
+                            document.querySelectorAll('#hero .reveal, #hero .reveal-scale').forEach(el => {
+                                el.classList.add('active');
+                                gsap.set(el, { clearProps: 'all' });
+                            });
+                        });
+                } else {
+                    document.querySelectorAll('#hero .reveal, #hero .reveal-scale').forEach(el => {
+                        el.classList.add('active');
+                    });
+                }
             }, 800);
         });
 
@@ -4049,65 +4182,299 @@
 
         typeEffect();
 
-        // ==================== SCROLL REVEAL ====================
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+        // ==================== SCROLL REVEAL (GSAP ScrollTrigger) ====================
+        if (!prefersReducedMotion) {
+            // Filter out elements with custom GSAP animations
+            const standardReveals = gsap.utils.toArray('.reveal, .reveal-left, .reveal-right, .reveal-scale')
+                .filter(el => {
+                    if (el.closest('#hero')) return false;
+                    if (el.classList.contains('exp-card')) return false;
+                    if (el.classList.contains('card-glow') && (el.closest('#projects') || el.closest('#products'))) return false;
+                    return true;
+                });
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+            ScrollTrigger.batch(standardReveals, {
+                onEnter: (elements) => {
+                    elements.forEach(el => el.classList.add('active'));
+                },
+                start: 'top 88%',
+                once: true
+            });
+
+            ScrollTrigger.batch('.stagger-children', {
+                onEnter: (elements) => {
+                    elements.forEach(el => el.classList.add('active'));
+                },
+                start: 'top 88%',
+                once: true
+            });
+
+            // ==================== SCROLL PROGRESS BAR ====================
+            gsap.to('#scrollProgress', {
+                scaleX: 1,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: document.documentElement,
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 0.3
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+
+            // ==================== PARALLAX EFFECTS ====================
+            if (!isMobile) {
+                // Hero decorative elements parallax
+                gsap.utils.toArray('#hero .absolute.blur-3xl, #hero .absolute.blur-2xl').forEach((el, i) => {
+                    gsap.to(el, {
+                        y: -80 - (i * 20),
+                        scrollTrigger: {
+                            trigger: '#hero',
+                            start: 'top top',
+                            end: 'bottom top',
+                            scrub: 1.5
+                        }
+                    });
+                });
+
+                // Hero photo subtle parallax
+                gsap.to('.photo-container', {
+                    y: 60,
+                    scrollTrigger: {
+                        trigger: '#hero',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1.5
+                    }
+                });
+            }
+
+            // ==================== EXPERIENCE CARDS CINEMATIC ENTRANCE ====================
+            gsap.utils.toArray('.exp-card').forEach((card, i) => {
+                card.style.transition = 'none';
+                gsap.fromTo(card,
+                    {
+                        opacity: 0,
+                        y: 40,
+                        x: isMobile ? 0 : (i % 2 === 0 ? -60 : 60)
+                    },
+                    {
+                        opacity: 1, y: 0, x: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 88%',
+                            once: true
+                        },
+                        onComplete: () => {
+                            card.classList.add('active');
+                            gsap.set(card, { clearProps: 'all' });
+                        }
+                    }
+                );
+            });
+
+            // ==================== PROJECT CARDS STAGGER ENTRANCE ====================
+            gsap.utils.toArray('#projects .card-glow').forEach((card) => {
+                card.style.transition = 'none';
+                gsap.fromTo(card,
+                    { opacity: 0, y: 80, scale: 0.92 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.9,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 92%',
+                            once: true
+                        },
+                        onComplete: () => {
+                            card.classList.add('active');
+                            gsap.set(card, { clearProps: 'all' });
+                        }
+                    }
+                );
+            });
+
+            // ==================== PRODUCT CARDS CINEMATIC HORIZONTAL PINNING ====================
+            if (!isMobile && !prefersReducedMotion) {
+                const track = document.querySelector('.products-track');
+                const productsSection = document.querySelector('#products');
+                
+                // Disable standard reveal styles so GSAP runs smoothly
+                document.querySelectorAll('#products .reveal, #products .reveal-scale').forEach(el => {
+                    el.style.transition = 'none';
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+                
+                // Get the scroll distance dynamically
+                const getScrollAmount = () => {
+                    const trackWidth = track.scrollWidth;
+                    const containerWidth = document.querySelector('.products-track-container').offsetWidth;
+                    return trackWidth - containerWidth;
+                };
+                
+                const scrollAmount = getScrollAmount();
+                if (scrollAmount > 0) {
+                    // Main horizontal scroll pinning timeline
+                    const productsTween = gsap.to(track, {
+                        x: () => -getScrollAmount(),
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: productsSection,
+                            pin: true,
+                            start: 'top top',
+                            end: () => `+=${getScrollAmount() + 400}`,
+                            scrub: 1, // smooth scroll scrub
+                            invalidateOnRefresh: true
+                        }
+                    });
+
+                    // Add scroll-scrubbed perspective transitions to each card as it slides into active view
+                    gsap.utils.toArray('.products-track .card-glow').forEach((card, index) => {
+                        card.style.transition = 'none';
+                        if (index > 0) {
+                            gsap.fromTo(card,
+                                {
+                                    opacity: 0.5,
+                                    scale: 0.9,
+                                    rotateY: 8,
+                                    z: -50
+                                },
+                                {
+                                    opacity: 1,
+                                    scale: 1,
+                                    rotateY: 0,
+                                    z: 0,
+                                    scrollTrigger: {
+                                        trigger: card,
+                                        containerAnimation: productsTween,
+                                        start: 'left 92%',
+                                        end: 'left 60%',
+                                        scrub: true
+                                    }
+                                }
+                            );
+                        } else {
+                            gsap.fromTo(card,
+                                { opacity: 0.9, scale: 0.96 },
+                                {
+                                    opacity: 1, scale: 1,
+                                    scrollTrigger: {
+                                        trigger: card,
+                                        containerAnimation: productsTween,
+                                        start: 'left 100%',
+                                        end: 'left 92%',
+                                        scrub: true
+                                    }
+                                }
+                            );
+                        }
+                    });
+                }
+            } else {
+                // Mobile or reduced motion: basic staggered fade-in
+                gsap.utils.toArray('#products .card-glow').forEach((card) => {
+                    card.style.transition = 'none';
+                    gsap.fromTo(card,
+                        { opacity: 0, y: 50 },
+                        {
+                            opacity: 1, y: 0,
+                            duration: 0.8,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 90%',
+                                once: true
+                            },
+                            onComplete: () => {
+                                card.classList.add('active');
+                                gsap.set(card, { clearProps: 'all' });
+                            }
+                        }
+                    );
+                });
+            }
+
+            // ==================== CONTACT CTA ENTRANCE ====================
+            const ctaContainer = document.querySelector('#contact .reveal-scale');
+            if (ctaContainer) {
+                ctaContainer.style.transition = 'none';
+                gsap.fromTo(ctaContainer,
+                    { opacity: 0, scale: 0.9, y: 50 },
+                    {
+                        opacity: 1, scale: 1, y: 0,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: ctaContainer,
+                            start: 'top 85%',
+                            once: true
+                        },
+                        onComplete: () => {
+                            ctaContainer.classList.add('active');
+                            gsap.set(ctaContainer, { clearProps: 'all' });
+                        }
+                    }
+                );
+            }
+        } else {
+            // Reduced motion: show everything immediately
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => {
+                el.classList.add('active');
+            });
+        }
+
+        // ==================== SKILL BAR ANIMATION (Scroll-scrubbed) ====================
+        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            const targetWidth = bar.style.getPropertyValue('--skill-width');
+            if (!prefersReducedMotion && !isMobile) {
+                // Disable CSS transition for GSAP control
+                bar.style.transition = 'none';
+                gsap.fromTo(bar,
+                    { width: '0%' },
+                    {
+                        width: targetWidth,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: bar,
+                            start: 'top 92%',
+                            end: 'top 55%',
+                            scrub: 1
+                        }
+                    }
+                );
+            } else {
+                ScrollTrigger.create({
+                    trigger: bar,
+                    start: 'top 90%',
+                    once: true,
+                    onEnter: () => bar.classList.add('animate')
+                });
+            }
         });
 
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // ==================== SKILL BAR ANIMATION ====================
-        const skillBars = document.querySelectorAll('.skill-bar-fill');
-
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+        // ==================== COUNTER ANIMATION (GSAP-powered) ====================
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'));
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 88%',
+                once: true,
+                onEnter: () => {
+                    const counter = { val: 0 };
+                    gsap.to(counter, {
+                        val: target,
+                        duration: 2,
+                        ease: 'power2.out',
+                        onUpdate: () => {
+                            el.textContent = Math.floor(counter.val) + '+';
+                        }
+                    });
                 }
             });
-        }, { threshold: 0.5 });
-
-        skillBars.forEach(bar => skillObserver.observe(bar));
-
-        // ==================== COUNTER ANIMATION ====================
-        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.getAttribute('data-target'));
-                    animateCounter(entry.target, target);
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statNumbers.forEach(el => counterObserver.observe(el));
-
-        function animateCounter(el, target) {
-            let current = 0;
-            const increment = target / 60;
-            const duration = 2000;
-            const stepTime = duration / 60;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                el.textContent = Math.floor(current) + '+';
-            }, stepTime);
-        }
+        });
 
         // ==================== NAVBAR SCROLL ====================
         let lastScroll = 0;
@@ -4124,26 +4491,45 @@
             lastScroll = currentScroll;
         });
 
-        // ==================== ACTIVE NAV LINK ====================
-        const sections = document.querySelectorAll('section[id]');
+        // ==================== ACTIVE NAV LINK (ScrollTrigger-based) ====================
         const navLinks = document.querySelectorAll('.nav-link');
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
+        if (!prefersReducedMotion && !isMobile) {
+            document.querySelectorAll('section[id]').forEach(section => {
+                const id = section.getAttribute('id');
+                const link = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (link) {
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: 'top 120px',
+                        end: 'bottom 120px',
+                        onToggle: (self) => {
+                            if (self.isActive) {
+                                navLinks.forEach(l => l.classList.remove('active'));
+                                link.classList.add('active');
+                            }
+                        }
+                    });
                 }
             });
+        } else {
+            // Fallback for mobile and reduced motion
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '-100px 0px -60% 0px' });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+            document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+        }
 
         // ==================== MOBILE MENU ====================
         const menuToggle = document.getElementById('menuToggle');
@@ -4180,7 +4566,11 @@
         });
 
         backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (lenis) {
+                lenis.scrollTo(0, { duration: 1.2 });
+            } else {
+                gsap.to(window, { duration: 1.2, scrollTo: { y: 0 }, ease: 'power3.inOut' });
+            }
         });
 
         // ==================== CONTACT FORM ====================
@@ -4213,6 +4603,41 @@
                 btn.style.transform = 'translate(0, 0)';
             });
         });
+
+        // ==================== 3D CARD TILT EFFECT ====================
+        if (!isMobile && !prefersReducedMotion) {
+            document.querySelectorAll('#projects .card-glow, #products .card-glow').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -4;
+                    const rotateY = ((x - centerX) / centerX) * 4;
+
+                    gsap.to(card, {
+                        rotateX: rotateX,
+                        rotateY: rotateY,
+                        duration: 0.4,
+                        ease: 'power2.out',
+                        transformPerspective: 1200,
+                        overwrite: 'auto'
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        duration: 0.8,
+                        ease: 'elastic.out(1, 0.5)',
+                        transformPerspective: 1200,
+                        overwrite: 'auto'
+                    });
+                });
+            });
+        }
 
         // ==================== REQUIREMENT PORTAL SCRIPTS ====================
         const compatScannerModal = document.getElementById('compatScannerModal');
@@ -4498,14 +4923,25 @@
         }
 
         // ==================== SMOOTH SCROLL ====================
-
-        // ==================== SMOOTH SCROLL ====================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const targetEl = document.querySelector(this.getAttribute('href'));
+                if (targetEl) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                    }
+                    if (lenis) {
+                        lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+                    } else {
+                        gsap.to(window, {
+                            duration: 1,
+                            scrollTo: { y: targetEl, offsetY: 70 },
+                            ease: 'power3.inOut'
+                        });
+                    }
                 }
             });
         });
