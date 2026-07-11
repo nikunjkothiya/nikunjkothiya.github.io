@@ -3820,7 +3820,7 @@
     </div>
 
     <!-- Requirement Compatibility Evaluation Engine Console -->
-    <div id="compatScannerModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-md transition-all duration-300">
+    <div id="compatScannerModal" data-lenis-prevent class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-md transition-all duration-300">
         <!-- CRT scanline glow overlay -->
         <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.2)_50%),linear-gradient(90deg,rgba(57,255,20,0.03),rgba(0,255,102,0.01),rgba(57,255,20,0.03))] bg-[size:100%_4px,3px_100%] opacity-0 html.theme-agentic:opacity-30"></div>
         
@@ -4665,6 +4665,7 @@
             compatScannerModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             isCompatScannerOpen = true;
+            if (lenis) lenis.stop();
             lucide.createIcons();
         }
 
@@ -4672,6 +4673,7 @@
             compatScannerModal.classList.add('hidden');
             document.body.style.overflow = '';
             isCompatScannerOpen = false;
+            if (lenis) lenis.start();
         }
 
         if (compatScannerTrigger) compatScannerTrigger.addEventListener('click', openCompatModal);
