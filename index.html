@@ -74,7 +74,9 @@
           "WebSockets", "Laravel Reverb", "Socket.IO", "Docker", "DevOps", "CI/CD", 
           "Multi-Tenant Architecture", "System Architecture", "API Design", "Agile Project Management",
           "WebRTC", "STUN/TURN", "FastAPI", "Python", "Flutter", "NDVI Satellite", "GCP",
-          "AI SEO", "AI GEO", "Brand Visibility", "Next.js", "Celery"
+          "AI SEO", "AI GEO", "Brand Visibility", "Next.js", "Celery",
+          "SQLite FTS5", "On-Device OCR", "Google ML Kit", "Mobile App Development", "Scoped Storage",
+          "PostGIS", "Geospatial Routing", "Poisson Survival Modeling", "VRP Optimization"
         ],
         "worksFor": {
           "@type": "Organization",
@@ -3149,10 +3151,27 @@
     <section id="products" class="relative z-10 py-14 sm:py-24 md:py-0 md:h-screen md:flex md:flex-col md:justify-center overflow-hidden">
         <div class="agentic-annotation">&lt;Section: Products Showcase /&gt; Schema Mapping: Person.knowsAbout</div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col justify-center">
-            <div class="mb-10 sm:mb-16 md:mb-12 reveal">
-                <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-4 block">04 — My Products</span>
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Personal Products</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl">Innovative applications and platforms engineered from inception to deployment</p>
+            <div class="mb-8 sm:mb-12 md:mb-10 reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-brand-400 text-xs font-mono tracking-widest uppercase mb-3 block">04 — My Products</span>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">Personal Products</h2>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Available for Sale &amp; Acquisition
+                        </span>
+                    </div>
+                    <p class="text-gray-500 mt-3 max-w-2xl text-sm sm:text-base leading-relaxed">
+                        Innovative standalone platforms and mobile apps engineered from inception to deployment. <span class="text-gray-400">Full intellectual property, codebase, and architecture available for direct commercial buyout or white-label licensing.</span>
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 transition-all hover:scale-105 group shadow-sm">
+                        <i data-lucide="handshake" class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                        <span>Inquire to Buy IP / Codebase</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="products-track-container relative overflow-visible">
@@ -3163,39 +3182,24 @@
                             class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="radar"
                                 class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                            <div
-                                class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
-                                LIVE</div>
                         </div>
                         <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
                             <div class="mb-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="text-lg font-bold text-white">BrandRadar</h3>
-                                    <a href="http://brandradar.live/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
-                                        Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                    </a>
-                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2">BrandRadar</h3>
                                 <p class="text-gray-500 text-sm leading-relaxed">
                                     A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and actionable growth opportunities.
                                 </p>
                             </div>
-                            <div>
-                                <div class="flex flex-wrap gap-1.5 mb-4">
-                                    <span class="tech-tag">Next.js</span>
-                                    <span class="tech-tag">FastAPI</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">Celery</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Redis</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">GCP</span>
-                                    <span class="tech-tag">Caddy</span>
-                                    <span class="tech-tag">AI GEO</span>
-                                </div>
-                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                    Status: Live deployment & active monitoring
-                                </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Celery</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Caddy</span>
+                                <span class="tech-tag">AI GEO</span>
                             </div>
                         </div>
                     </div>
@@ -3206,35 +3210,20 @@
                             class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="video"
                                 class="project-icon w-16 h-16 text-brand-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                            <div
-                                class="project-badge project-badge-green absolute top-4 right-4 px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-[10px] font-mono">
-                                DEV PHASE</div>
                         </div>
                         <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
                             <div class="mb-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="text-lg font-bold text-white">Stranger Video Call</h3>
-                                    <a href="https://myownproduct.site/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 text-xs font-medium">
-                                        Live Site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                    </a>
-                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2">Stranger Video Call</h3>
                                 <p class="text-gray-500 text-sm leading-relaxed">
                                     One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built to run inside containerized environments for scalable, low-latency communication.
                                 </p>
                             </div>
-                            <div>
-                                <div class="flex flex-wrap gap-1.5 mb-4">
-                                    <span class="tech-tag">WebRTC</span>
-                                    <span class="tech-tag">STUN/TURN</span>
-                                    <span class="tech-tag">Vue.js</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">GCP</span>
-                                </div>
-                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                    <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                                    Status: Local testing & developing product phase
-                                </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">WebRTC</span>
+                                <span class="tech-tag">STUN/TURN</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Docker</span>
                             </div>
                         </div>
                     </div>
@@ -3245,35 +3234,80 @@
                             class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="sprout"
                                 class="project-icon w-16 h-16 text-green-400/50 group-hover:scale-110 transition-transform duration-500"></i>
-                            <div
-                                class="project-badge project-badge-brand absolute top-4 right-4 px-2 py-1 rounded-md bg-brand-500/20 text-brand-400 text-[10px] font-mono">
-                                DEV PHASE</div>
                         </div>
                         <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
                             <div class="mb-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="text-lg font-bold text-white">FarmAI Solution</h3>
-                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2">FarmAI Solution</h3>
                                 <p class="text-gray-500 text-sm leading-relaxed">
                                     Complete agricultural management optimization platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multi-language audio integrations, and smart weather indicators with audio warnings for farmers.
                                 </p>
                             </div>
-                            <div>
-                                <div class="flex flex-wrap gap-1.5 mb-4">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">FastAPI</span>
-                                    <span class="tech-tag">Flutter</span>
-                                    <span class="tech-tag">NDVI Satellite</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Redis</span>
-                                    <span class="tech-tag">GCP</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">TTS/STT</span>
-                                </div>
-                                <div class="text-[10px] font-mono text-gray-500 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
-                                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                                    Status: Server offline / local development phase
-                                </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">NDVI Satellite</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">TTS/STT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.2s">
+                        <div
+                            class="project-visual project-purple h-48 bg-gradient-to-br from-purple-900/40 to-indigo-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="file-search"
+                                class="project-icon w-16 h-16 text-purple-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-bold text-white mb-2">Docena Smart Find</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    100% offline, privacy-first mobile document search engine and reader. Features on-device SQLite FTS5 deep text search, offline ML Kit OCR for scanned files, and built-in multi-format viewers.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">Mobile App</span>
+                                <span class="tech-tag">Flutter / Dart</span>
+                                <span class="tech-tag">SQLite FTS5</span>
+                                <span class="tech-tag">BM25 Search</span>
+                                <span class="tech-tag">Google ML Kit</span>
+                                <span class="tech-tag">On-Device OCR</span>
+                                <span class="tech-tag">PDF / Office Engine</span>
+                                <span class="tech-tag">Scoped Storage (SAF)</span>
+                                <span class="tech-tag">Android &amp; iOS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.25s">
+                        <div
+                            class="project-visual project-teal h-48 bg-gradient-to-br from-teal-900/40 to-emerald-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="pill"
+                                class="project-icon w-16 h-16 text-teal-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-bold text-white mb-2">Civic Medicine Platform</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    Public-utility geospatial medicine search and multi-stop route optimization platform. Features real-time stock decay probability (Poisson survival), chemical bio-equivalence matching, and MapLibre GPS routing for neighborhood pharmacies.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">PostGIS</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">MapLibre GL</span>
+                                <span class="tech-tag">Poisson Survival Engine</span>
+                                <span class="tech-tag">VRP Route Optimization</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Nginx</span>
                             </div>
                         </div>
                     </div>
@@ -4772,6 +4806,9 @@
             let isVideoCall = false;
             let isFarmAi = false;
             let isBrandRadar = false;
+            let isDocena = false;
+            let isCivicMed = false;
+            let isAcquisition = false;
 
             if (query.includes('laravel') || query.includes('php') || query.includes('backend') || query.includes('back-end')) {
                 score += 3;
@@ -4841,7 +4878,34 @@
                 isBrandRadar = true;
                 matches.push({
                     title: "Brand Presence & AI SEO Audits",
-                    desc: "Architected BrandRadar, a Next.js/FastAPI visibility auditor running on GCP to analyze brand presence across search engines and AI assistants."
+                    desc: "Architected BrandRadar, a Next.js/FastAPI visibility auditor to analyze brand presence across search engines and AI assistants."
+                });
+            }
+
+            if (query.includes('docena') || query.includes('document') || query.includes('ocr') || query.includes('fts5') || query.includes('offline') || query.includes('pdf') || query.includes('reader') || query.includes('ml kit') || query.includes('search engine') || query.includes('mobile app') || query.includes('flutter')) {
+                score += 3;
+                isDocena = true;
+                matches.push({
+                    title: "On-Device Document Search & Offline OCR",
+                    desc: "Architected Docena Smart Find, a 100% offline mobile document search engine and multi-format reader with SQLite FTS5 (BM25), Google ML Kit OCR, and scoped storage."
+                });
+            }
+
+            if (query.includes('civic') || query.includes('medicine') || query.includes('pharmacy') || query.includes('pharma') || query.includes('drug') || query.includes('postgis') || query.includes('geospatial') || query.includes('gis') || query.includes('routing') || query.includes('vrp') || query.includes('poisson') || query.includes('prescription')) {
+                score += 3;
+                isCivicMed = true;
+                matches.push({
+                    title: "Civic Medicine Search & Geospatial Routing",
+                    desc: "Architected the Civic Medicine Platform featuring PostGIS spatial indexing, Poisson stock survival models, and multi-stop VRP pharmacy route solver."
+                });
+            }
+
+            if (query.includes('buy') || query.includes('acquisition') || query.includes('purchase') || query.includes('sale') || query.includes('sell') || query.includes('buyout') || query.includes('license') || query.includes('licensing') || query.includes('ip') || query.includes('source code')) {
+                score += 4;
+                isAcquisition = true;
+                matches.push({
+                    title: "IP Acquisition & Commercial Buyout",
+                    desc: "All personal products and codebases (BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine) are open for direct acquisition, codebase buyout, or white-label licensing."
                 });
             }
 
@@ -4851,7 +4915,7 @@
             // Generate Assessment Statement
             let assessment = "";
             if (score >= 95) {
-                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isBrandRadar ? 'Brand Audits/Next.js ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
+                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isBrandRadar ? 'Brand Audits/Next.js ' : ''}${isDocena ? 'Offline Search/Mobile ' : ''}${isCivicMed ? 'Geospatial/PostGIS ' : ''}${isAcquisition ? 'IP Acquisition/Buyout ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
             } else {
                 assessment = `Strong structural match! Nikunj has robust engineering capabilities that match your requirements. His 6+ years of versatile full-stack experience and open-source spirit ensure rapid adaptation and execution of your target tech stack.`;
             }
@@ -4878,13 +4942,22 @@
                 proposalText += `• WebSockets Veteran: Designed instant chat streaming servers and live supply chain dashboards utilizing Socket.IO and Laravel Reverb WebSockets to process heavy client updates smoothly.\n`;
             }
             if (isBrandRadar) {
-                proposalText += `• AI SEO & Visibility Architect: Created BrandRadar, a Next.js and FastAPI platform analyzing brand visibility across search engines and AI assistants, with Docker containers deployed on GCP.\n`;
+                proposalText += `• AI SEO & Visibility Architect: Created BrandRadar, a Next.js and FastAPI platform analyzing brand visibility across search engines and AI assistants, with containerized services.\n`;
+            }
+            if (isDocena) {
+                proposalText += `• Offline Mobile & Search Systems Engineer: Architected Docena Smart Find, a zero-cloud mobile document search engine and reader utilizing on-device SQLite FTS5 (BM25 ranking), Google ML Kit OCR, and scoped storage.\n`;
+            }
+            if (isCivicMed) {
+                proposalText += `• Geospatial & Healthcare Systems Architect: Engineered the Civic Medicine Platform, solving multi-stop pharmacy routing (VRP) and inventory survival modeling with PostGIS and FastAPI.\n`;
             }
             if (isVideoCall) {
                 proposalText += `• WebRTC & Video Streaming Engineer: Designed and engineered a custom stranger video calling product with peer-to-peer WebRTC, STUN/TURN server setups, and Vue.js frontends.\n`;
             }
             if (isFarmAi) {
                 proposalText += `• AgTech & AI Developer: Developed FarmAI agricultural platform with FastAPI backends, Scan AI, Help AI, NDVI satellite crop metrics, and TTS/STT multi-language audio alerts.\n`;
+            }
+            if (isAcquisition) {
+                proposalText += `• IP & Commercial Codebase Buyout: All personal products (BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine Platform) are fully architected, containerized, and available for direct commercial acquisition or white-label licensing.\n`;
             }
             proposalText += `• Project Lead Leadership: Successfully guided developer teams, managed active stakeholder collaborations, and delivered scalable applications within schedule and budget.\n\n`;
             proposalText += `Nikunj operates remote out of Ahmedabad, India and holds immediate availability for premium contracts or permanent roles. Let's schedule an engineering call to discuss your objectives in detail.\n\n`;

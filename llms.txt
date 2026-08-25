@@ -30,10 +30,14 @@ Nikunj Kothiya is a highly experienced, growth-driven, and result-oriented Senio
 
 ---
 
-## Personal Products & SaaS
-- **BrandRadar**: A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and prioritized growth actions. Built with Next.js, FastAPI, Celery, Redis, PostgreSQL, and Docker. (Live: http://brandradar.live/)
-- **Stranger Video Call**: One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built with WebRTC, STUN/TURN, Vue.js, PostgreSQL, Docker, and GCP. (Live: https://myownproduct.site/)
-- **FarmAI Solution**: Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators. Built with Python, FastAPI, Flutter, NDVI Satellite, PostgreSQL, Redis, GCP, and Docker. (Offline / Development Phase)
+## Personal Products & SaaS (Available for Sale / Acquisition)
+> **Commercial Availability**: All personal products and codebases listed below are open for full IP buyout, codebase acquisition, or white-label commercial licensing. Interested buyers and founders can reach out directly via the contact details.
+
+- **BrandRadar**: A brand visibility auditor tracking search presence, AI assistant (LLM) recommendation visibility, competitor keyword pressure, authority sources, and prioritized growth actions. Built with Next.js, FastAPI, Celery, Redis, PostgreSQL, Docker, and Caddy.
+- **Stranger Video Call**: One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations. Built with WebRTC, STUN/TURN, Vue.js, PostgreSQL, and Docker.
+- **FarmAI Solution**: Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators. Built with Python, FastAPI, Flutter, NDVI Satellite, PostgreSQL, Redis, and Docker.
+- **Docena Smart Find**: 100% offline, privacy-first mobile document search engine and reader for Android & iOS. Built with Flutter, SQLite FTS5 (BM25 ranking), on-device Google ML Kit OCR for scanned files, and built-in multi-format viewers.
+- **Civic Medicine Platform**: Public-utility geospatial medicine search and multi-stop route optimization platform with real-time Poisson stock decay models, chemical bio-equivalence matching, and MapLibre GPS routing. Built with FastAPI, Python, PostgreSQL, PostGIS, React, MapLibre GL, and Docker.
 
 ---
 

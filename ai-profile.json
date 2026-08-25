@@ -107,22 +107,29 @@
     {
       "name": "BrandRadar",
       "description": "A brand visibility auditor showing brand presence across search engines and AI assistants, competitor visibility, authority sources, and prioritized growth actions.",
-      "technologies": ["Next.js", "FastAPI", "Python", "Celery", "PostgreSQL", "Redis", "Docker", "GCP", "Caddy", "AI GEO Visibility"],
-      "url": "http://brandradar.live/",
-      "status": "Live deployment & active monitoring"
+      "technologies": ["Next.js", "FastAPI", "Python", "Celery", "PostgreSQL", "Redis", "Docker", "Caddy", "AI GEO Visibility"]
     },
     {
       "name": "Stranger Video Call",
       "description": "One-to-one custom stranger video calling platform utilizing customized WebRTC, STUN, and TURN server integrations.",
-      "technologies": ["WebRTC", "STUN/TURN", "Vue.js", "PostgreSQL", "Docker", "GCP"],
-      "url": "https://myownproduct.site/",
-      "status": "Local testing and developing product phase"
+      "technologies": ["WebRTC", "STUN/TURN", "Vue.js", "PostgreSQL", "Docker"]
     },
     {
       "name": "FarmAI Solution",
       "description": "Agricultural optimization and management platform featuring Scan AI, Help AI, NDVI satellite crop data analytics, TTS/STT multilingual integration, and smart weather indicators.",
-      "technologies": ["Python", "FastAPI", "Flutter", "NDVI Satellite", "PostgreSQL", "Redis", "GCP", "Docker", "TTS/STT"],
-      "status": "Server offline / local development phase"
+      "technologies": ["Python", "FastAPI", "Flutter", "NDVI Satellite", "PostgreSQL", "Redis", "Docker", "TTS/STT"]
+    },
+    {
+      "name": "Docena Smart Find",
+      "tagline": "Private, on-device document search with offline text recognition",
+      "description": "100% offline, privacy-first mobile document search engine and reader. Features on-device SQLite FTS5 deep text search, offline ML Kit OCR for scanned files, and built-in multi-format viewers.",
+      "technologies": ["Flutter / Dart", "SQLite FTS5", "BM25 Search", "Google ML Kit", "On-Device OCR", "PDF Engine", "Office & Spreadsheet Viewer", "Scoped Storage (SAF)", "Android & iOS"]
+    },
+    {
+      "name": "Civic Medicine Platform",
+      "description": "Public-utility geospatial medicine search and multi-stop route optimization platform. Features real-time stock decay probability (Poisson survival), chemical bio-equivalence matching, and MapLibre GPS routing for neighborhood pharmacies.",
+      "technologies": ["FastAPI", "Python", "PostgreSQL", "PostGIS", "React", "MapLibre GL", "Poisson Survival Engine", "VRP Route Optimization", "Docker", "Nginx"]
     }
-  ]
+  ],
+  "commercialAvailability": "All personal products, codebases, and architectures are open for direct acquisition, commercial buyout, or white-label licensing. Inquiries welcome."
 }
