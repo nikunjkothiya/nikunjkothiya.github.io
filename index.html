@@ -76,7 +76,8 @@
           "WebRTC", "STUN/TURN", "FastAPI", "Python", "Flutter", "NDVI Satellite", "GCP",
           "AI SEO", "AI GEO", "Brand Visibility", "Next.js", "Celery",
           "SQLite FTS5", "On-Device OCR", "Google ML Kit", "Mobile App Development", "Scoped Storage",
-          "PostGIS", "Geospatial Routing", "Poisson Survival Modeling", "VRP Optimization"
+          "PostGIS", "Geospatial Routing", "Poisson Survival Modeling", "VRP Optimization",
+          "SQLAlchemy", "Fintech Payment Gateways", "Razorpay", "Transactional Outbox Pattern", "Skeuomorphic UI Physics"
         ],
         "worksFor": {
           "@type": "Organization",
@@ -3179,6 +3180,34 @@
                     <!-- Product Card 1 -->
                     <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.05s">
                         <div
+                            class="project-visual project-amber h-48 bg-gradient-to-br from-amber-950/40 to-yellow-900/40 flex items-center justify-center relative flex-shrink-0">
+                            <i data-lucide="landmark"
+                                class="project-icon w-16 h-16 text-amber-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow justify-between bg-white/[0.01] border-t border-white/5">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-bold text-white mb-2">Monument Patron</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    Interactive 19th-century antiquarian explorer diary and digital heritage patron platform. Features skeuomorphic book physics, optical zoom loupe, single-edition patron bookplates, and idempotent Razorpay fintech settlement.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">SQLAlchemy</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Celery</span>
+                                <span class="tech-tag">Razorpay</span>
+                                <span class="tech-tag">Vanilla JS</span>
+                                <span class="tech-tag">CSS3 Physics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.1s">
+                        <div
                             class="project-visual project-blue h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="radar"
                                 class="project-icon w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform duration-500"></i>
@@ -3204,8 +3233,8 @@
                         </div>
                     </div>
 
-                    <!-- Product Card 2 -->
-                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.1s">
+                    <!-- Product Card 3 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.15s">
                         <div
                             class="project-visual project-brand h-48 bg-gradient-to-br from-brand-900/40 to-purple-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="video"
@@ -3228,8 +3257,8 @@
                         </div>
                     </div>
 
-                    <!-- Product Card 3 -->
-                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.15s">
+                    <!-- Product Card 4 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.2s">
                         <div
                             class="project-visual project-green h-48 bg-gradient-to-br from-green-900/40 to-teal-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="sprout"
@@ -3255,8 +3284,8 @@
                         </div>
                     </div>
 
-                    <!-- Product Card 4 -->
-                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.2s">
+                    <!-- Product Card 5 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.25s">
                         <div
                             class="project-visual project-purple h-48 bg-gradient-to-br from-purple-900/40 to-indigo-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="file-search"
@@ -3283,8 +3312,8 @@
                         </div>
                     </div>
 
-                    <!-- Product Card 5 -->
-                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.25s">
+                    <!-- Product Card 6 -->
+                    <div class="card-glow rounded-2xl overflow-hidden reveal-scale group flex flex-col h-full md:w-[480px] md:flex-shrink-0" style="transition-delay:0.3s">
                         <div
                             class="project-visual project-teal h-48 bg-gradient-to-br from-teal-900/40 to-emerald-900/40 flex items-center justify-center relative flex-shrink-0">
                             <i data-lucide="pill"
@@ -4809,6 +4838,7 @@
             let isDocena = false;
             let isCivicMed = false;
             let isAcquisition = false;
+            let isMonumentPatron = false;
 
             if (query.includes('laravel') || query.includes('php') || query.includes('backend') || query.includes('back-end')) {
                 score += 3;
@@ -4900,12 +4930,21 @@
                 });
             }
 
+            if (query.includes('monument') || query.includes('patron') || query.includes('heritage') || query.includes('book') || query.includes('diary') || query.includes('loupe') || query.includes('antiquarian') || query.includes('razorpay') || query.includes('sqlalchemy') || query.includes('skeuomorphic') || query.includes('bookplate') || query.includes('fintech')) {
+                score += 3;
+                isMonumentPatron = true;
+                matches.push({
+                    title: "Digital Heritage Platform & Skeuomorphic Physics",
+                    desc: "Architected Monument Patron, an antiquarian explorer diary platform with custom book physics, optical loupe zoom, idempotent Razorpay settlement, and transactional outbox queues."
+                });
+            }
+
             if (query.includes('buy') || query.includes('acquisition') || query.includes('purchase') || query.includes('sale') || query.includes('sell') || query.includes('buyout') || query.includes('license') || query.includes('licensing') || query.includes('ip') || query.includes('source code')) {
                 score += 4;
                 isAcquisition = true;
                 matches.push({
                     title: "IP Acquisition & Commercial Buyout",
-                    desc: "All personal products and codebases (BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine) are open for direct acquisition, codebase buyout, or white-label licensing."
+                    desc: "All personal products and codebases (Monument Patron, BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine) are open for direct acquisition, codebase buyout, or white-label licensing."
                 });
             }
 
@@ -4915,7 +4954,7 @@
             // Generate Assessment Statement
             let assessment = "";
             if (score >= 95) {
-                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isBrandRadar ? 'Brand Audits/Next.js ' : ''}${isDocena ? 'Offline Search/Mobile ' : ''}${isCivicMed ? 'Geospatial/PostGIS ' : ''}${isAcquisition ? 'IP Acquisition/Buyout ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
+                assessment = `Highly recommended candidate! Nikunj has direct expert-tier alignment with your target tech stack (${isLaravel ? 'Laravel/PHP ' : ''}${isAws ? 'AWS ' : ''}${isRealtime ? 'WebSockets ' : ''}${isBooking ? 'Reservations ' : ''}${isMonumentPatron ? 'Heritage/Fintech ' : ''}${isBrandRadar ? 'Brand Audits/Next.js ' : ''}${isDocena ? 'Offline Search/Mobile ' : ''}${isCivicMed ? 'Geospatial/PostGIS ' : ''}${isAcquisition ? 'IP Acquisition/Buyout ' : ''}${isVideoCall ? 'WebRTC/Video ' : ''}${isFarmAi ? 'Python/AI ' : ''}). His extensive background as Project Lead makes him perfectly suited to immediately architect, scale, and lead your project.`;
             } else {
                 assessment = `Strong structural match! Nikunj has robust engineering capabilities that match your requirements. His 6+ years of versatile full-stack experience and open-source spirit ensure rapid adaptation and execution of your target tech stack.`;
             }
@@ -4941,6 +4980,9 @@
             if (isRealtime) {
                 proposalText += `• WebSockets Veteran: Designed instant chat streaming servers and live supply chain dashboards utilizing Socket.IO and Laravel Reverb WebSockets to process heavy client updates smoothly.\n`;
             }
+            if (isMonumentPatron) {
+                proposalText += `• Interactive Web & Fintech Architect: Engineered Monument Patron, a skeuomorphic digital heritage platform with custom tactile physics, optical loupe magnification, and idempotent Razorpay payment pipelines.\n`;
+            }
             if (isBrandRadar) {
                 proposalText += `• AI SEO & Visibility Architect: Created BrandRadar, a Next.js and FastAPI platform analyzing brand visibility across search engines and AI assistants, with containerized services.\n`;
             }
@@ -4957,7 +4999,7 @@
                 proposalText += `• AgTech & AI Developer: Developed FarmAI agricultural platform with FastAPI backends, Scan AI, Help AI, NDVI satellite crop metrics, and TTS/STT multi-language audio alerts.\n`;
             }
             if (isAcquisition) {
-                proposalText += `• IP & Commercial Codebase Buyout: All personal products (BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine Platform) are fully architected, containerized, and available for direct commercial acquisition or white-label licensing.\n`;
+                proposalText += `• IP & Commercial Codebase Buyout: All personal products (Monument Patron, BrandRadar, Stranger Video Call, FarmAI, Docena Smart Find, Civic Medicine Platform) are fully architected, containerized, and available for direct commercial acquisition or white-label licensing.\n`;
             }
             proposalText += `• Project Lead Leadership: Successfully guided developer teams, managed active stakeholder collaborations, and delivered scalable applications within schedule and budget.\n\n`;
             proposalText += `Nikunj operates remote out of Ahmedabad, India and holds immediate availability for premium contracts or permanent roles. Let's schedule an engineering call to discuss your objectives in detail.\n\n`;

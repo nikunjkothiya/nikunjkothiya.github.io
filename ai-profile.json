@@ -105,6 +105,12 @@
   ],
   "products": [
     {
+      "name": "Monument Patron",
+      "tagline": "An interactive 19th-century antiquarian explorer’s diary & digital heritage patron platform",
+      "description": "Full-stack digital heritage publication and patronage platform designed as a tactile 19th-century antiquarian diary. Features custom skeuomorphic book physics, optical zoom loupe, single-edition digital patron bookplates, and idempotent Razorpay payment processing with transactional outbox email delivery.",
+      "technologies": ["Python", "FastAPI", "MySQL", "SQLAlchemy", "Redis", "Celery", "Razorpay", "Vanilla JS", "CSS3 Physics", "Nginx"]
+    },
+    {
       "name": "BrandRadar",
       "description": "A brand visibility auditor showing brand presence across search engines and AI assistants, competitor visibility, authority sources, and prioritized growth actions.",
       "technologies": ["Next.js", "FastAPI", "Python", "Celery", "PostgreSQL", "Redis", "Docker", "Caddy", "AI GEO Visibility"]
