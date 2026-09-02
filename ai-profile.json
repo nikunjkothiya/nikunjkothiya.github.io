@@ -107,8 +107,10 @@
     {
       "name": "Monument Patron",
       "tagline": "An interactive 19th-century antiquarian explorer’s diary & digital heritage patron platform",
+      "url": "https://monumentpatron.world",
+      "status": "Live",
       "description": "Full-stack digital heritage publication and patronage platform designed as a tactile 19th-century antiquarian diary. Features custom skeuomorphic book physics, optical zoom loupe, single-edition digital patron bookplates, and idempotent Razorpay payment processing with transactional outbox email delivery.",
-      "technologies": ["Python", "FastAPI", "MySQL", "SQLAlchemy", "Redis", "Celery", "Razorpay", "Vanilla JS", "CSS3 Physics", "Nginx"]
+      "technologies": ["Python", "FastAPI", "MySQL", "SQLAlchemy", "Redis", "Celery", "Razorpay", "Vanilla JS", "CSS3 Physics", "Contabo", "Nginx"]
     },
     {
       "name": "BrandRadar",
